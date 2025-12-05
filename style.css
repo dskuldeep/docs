@@ -296,25 +296,31 @@ article img {
     padding: 60px 0 40px;
     margin-top: 0;
     width: 100%;
+    max-width: 100%;
     position: relative;
     z-index: 1;
+    overflow-x: hidden;
 }
 
 #custom-footer {
     clear: both;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .w-layout-blockcontainer.container.w-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Strip Section (Top CTA) */
 .strip-wrapper.ptblr {
     padding: 40px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 60px;
+    margin-bottom: 0;
 }
 
 .strip-box {
@@ -400,14 +406,22 @@ article img {
 .footer-wrapper {
     display: flex;
     justify-content: space-between;
-    gap: 60px;
+    gap: 40px;
     flex-wrap: wrap;
-    padding-top: 80px;
+    padding-top: 60px;
+    margin-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .footer-left {
     flex: 0 0 300px;
     min-width: 250px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .footer-left-top {
@@ -536,15 +550,28 @@ article img {
 .footer-right {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
     align-items: flex-start;
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1025px) {
+    .footer-right {
+        grid-template-columns: repeat(5, minmax(100px, 1fr));
+        gap: 24px;
+    }
 }
 
 .footer-link-box {
     min-width: 0;
     width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .footer-link-title {
@@ -552,6 +579,8 @@ article img {
     font-weight: 600;
     color: #fff;
     margin-bottom: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .footer-link {
@@ -561,6 +590,9 @@ article img {
     font-size: 14px;
     margin-bottom: 12px;
     transition: color 0.2s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
 }
 
 .footer-link:hover {
@@ -580,15 +612,29 @@ article img {
 
     .footer-wrapper {
         flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-left {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 
     .footer-right {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        gap: 24px;
+        width: 100%;
     }
 
     .footer-link-box {
-        min-width: 0;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-right {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 }
 
