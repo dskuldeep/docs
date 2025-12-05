@@ -46,7 +46,8 @@
               "guides/getting-started",
               "guides/integration",
               "guides/best-practices",
-              "guides/advanced"
+              "guides/advanced",
+              "guides/custom-react-components"
             ]
           }
         ]

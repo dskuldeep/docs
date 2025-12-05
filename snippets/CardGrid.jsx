@@ -23,6 +23,17 @@ export const CardGrid = ({ cards, cols = 3 }) => {
             textDecoration: 'none',
             color: 'inherit',
             backgroundColor: '#ffffff',
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = '#0c3b43'
+            e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+            e.currentTarget.style.transform = 'translateY(-2px)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = '#e5e7eb'
+            e.currentTarget.style.boxShadow = 'none'
+            e.currentTarget.style.transform = 'translateY(0)'
           }}
         >
           <h3 style={{
@@ -48,3 +59,4 @@ export const CardGrid = ({ cards, cols = 3 }) => {
     </div>
   )
 }
+

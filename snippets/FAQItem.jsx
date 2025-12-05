@@ -17,11 +17,19 @@ export const FAQItem = ({ question, answer, defaultOpen = false }) => {
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#ffffff',
+        transition: 'background-color 0.2s',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = '#f3f4f6'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = '#ffffff'
       }}>
         <span>{question}</span>
         <span style={{
           fontSize: '1.5rem',
           color: '#6b7280',
+          transition: 'transform 0.2s',
         }}>
           ▼
         </span>
@@ -38,3 +46,4 @@ export const FAQItem = ({ question, answer, defaultOpen = false }) => {
     </details>
   )
 }
+

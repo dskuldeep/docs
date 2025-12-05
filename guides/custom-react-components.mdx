@@ -1,0 +1,388 @@
+---
+title: "Creating Custom React Components"
+description: "Learn how to create server-side rendered React components for Mintlify documentation"
+---
+
+# Creating Custom React Components
+
+This guide explains how to create custom React components that work seamlessly with Mintlify's server-side rendering (SSR) system.
+
+## Overview
+
+Custom React components allow you to build interactive and reusable elements in your documentation. All components in this portal are **server-side rendered** for optimal performance and SEO.
+
+## File Structure
+
+Custom React components must be placed in the `/snippets` folder and use the `.jsx` extension:
+
+```
+docs/
+├── snippets/
+│   ├── CardGrid.jsx
+│   ├── FAQItem.jsx
+│   └── GlossaryCard.jsx
+└── your-page.mdx
+```
+
+## Basic Component Structure
+
+Here's a simple example of a server-side rendered React component:
+
+```jsx
+// /snippets/MyComponent.jsx
+export const MyComponent = ({ title, description }) => {
+  return (
+    <div style={{
+      padding: '1.5rem',
+      border: '1px solid #e5e7eb',
+      borderRadius: '0.5rem',
+      backgroundColor: '#ffffff',
+    }}>
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  )
+}
+```
+
+## Using Components in MDX
+
+Import and use your component in any MDX file:
+
+```mdx
+---
+title: "My Page"
+---
+
+import { MyComponent } from '/snippets/MyComponent.jsx'
+
+<MyComponent 
+  title="Hello World"
+  description="This is a custom component"
+/>
+```
+
+## SSR Best Practices
+
+### ✅ DO: Use Pure React Components
+
+Components should be pure functions that return JSX. They work perfectly with SSR:
+
+```jsx
+export const Card = ({ title, content }) => {
+  return (
+    <div className="card">
+      <h3>{title}</h3>
+      <p>{content}</p>
+    </div>
+  )
+}
+```
+
+### ✅ DO: Use Event Handlers for Interactivity
+
+Event handlers like `onClick`, `onMouseEnter`, and `onMouseLeave` work with SSR and hydrate on the client:
+
+```jsx
+export const InteractiveCard = ({ title }) => {
+  return (
+    <div
+      style={{ padding: '1rem', cursor: 'pointer' }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = '#f3f4f6'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = '#ffffff'
+      }}
+    >
+      <h3>{title}</h3>
+    </div>
+  )
+}
+```
+
+### ✅ DO: Use Native HTML Elements
+
+Native HTML elements like `<details>` and `<summary>` work great for SSR:
+
+```jsx
+export const FAQItem = ({ question, answer, defaultOpen = false }) => {
+  return (
+    <details open={defaultOpen}>
+      <summary>{question}</summary>
+      <div>{answer}</div>
+    </details>
+  )
+}
+```
+
+### ✅ DO: Accept React Nodes as Props
+
+Components can accept JSX/React nodes for flexible content:
+
+```jsx
+export const GlossaryCard = ({ term, definition, category }) => {
+  return (
+    <div className="glossary-card">
+      <h3>{term}</h3>
+      {category && <span>{category}</span>}
+      <div>{definition}</div>
+    </div>
+  )
+}
+```
+
+Usage:
+
+```mdx
+<GlossaryCard 
+  term="API Key"
+  category="Security"
+  definition={
+    <>
+      A unique identifier used to authenticate requests.
+      <ul>
+        <li>Keep keys secure</li>
+        <li>Never share publicly</li>
+      </ul>
+    </>
+  }
+/>
+```
+
+### ❌ DON'T: Use Client-Only Features
+
+Avoid features that only work in the browser:
+
+- `window`, `document`, `localStorage` (use in event handlers if needed)
+- `useEffect` for initial render (use for side effects only)
+- Browser-specific APIs without checks
+
+### ❌ DON'T: Use 'use client' Directive
+
+Mintlify handles SSR automatically. Don't add `'use client'` directives:
+
+```jsx
+// ❌ Don't do this
+'use client'
+export const MyComponent = () => { ... }
+
+// ✅ Do this instead
+export const MyComponent = () => { ... }
+```
+
+## Real-World Examples
+
+### Example 1: CardGrid Component
+
+A reusable grid of cards:
+
+```jsx
+// /snippets/CardGrid.jsx
+export const CardGrid = ({ cards, cols = 3 }) => {
+  const gridCols = 'repeat(' + (cols || 3) + ', 1fr)';
+  
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: gridCols,
+      gap: '1.5rem',
+      marginTop: '2rem',
+      marginBottom: '2rem',
+    }}>
+      {cards && cards.map && cards.map((card) => (
+        <a
+          key={card.href || card.title}
+          href={card.href}
+          style={{
+            display: 'block',
+            padding: '1.5rem',
+            border: '1px solid #e5e7eb',
+            borderRadius: '0.5rem',
+            textDecoration: 'none',
+            color: 'inherit',
+            backgroundColor: '#ffffff',
+          }}
+        >
+          <h3>{card.title}</h3>
+          {card.description && <p>{card.description}</p>}
+        </a>
+      ))}
+    </div>
+  )
+}
+```
+
+### Example 2: FAQItem Component
+
+An expandable FAQ item using native HTML:
+
+```jsx
+// /snippets/FAQItem.jsx
+export const FAQItem = ({ question, answer, defaultOpen = false }) => {
+  return (
+    <details style={{
+      border: '1px solid #e5e7eb',
+      borderRadius: '0.5rem',
+      marginBottom: '1rem',
+    }} open={defaultOpen}>
+      <summary style={{
+        padding: '1rem 1.5rem',
+        cursor: 'pointer',
+        fontWeight: '600',
+      }}>
+        {question}
+      </summary>
+      <div style={{ padding: '1.5rem' }}>
+        {typeof answer === 'string' ? <p>{answer}</p> : answer}
+      </div>
+    </details>
+  )
+}
+```
+
+### Example 3: GlossaryCard Component
+
+A card for displaying glossary terms with markdown support:
+
+```jsx
+// /snippets/GlossaryCard.jsx
+export const GlossaryCard = ({ term, definition, category, link }) => {
+  return (
+    <div 
+      className="glossary-card"
+      style={{
+        border: '1px solid #e5e7eb',
+        borderRadius: '0.5rem',
+        padding: '1.5rem',
+        marginBottom: '1rem',
+        backgroundColor: '#ffffff',
+      }}
+    >
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        marginBottom: '0.75rem',
+      }}>
+        <h3>{term}</h3>
+        {category && (
+          <span style={{
+            fontSize: '0.75rem',
+            backgroundColor: '#f3f4f6',
+            padding: '0.25rem 0.75rem',
+            borderRadius: '0.375rem',
+            textTransform: 'uppercase',
+          }}>
+            {category}
+          </span>
+        )}
+      </div>
+      <div>{definition}</div>
+      {link && link.href && (
+        <div style={{ marginTop: '0.75rem' }}>
+          <a href={link.href}>
+            {link.text || 'Learn more'} →
+          </a>
+        </div>
+      )}
+    </div>
+  )
+}
+```
+
+## Import Path Format
+
+Always use absolute paths starting with `/snippets/`:
+
+```mdx
+// ✅ Correct
+import { MyComponent } from '/snippets/MyComponent.jsx'
+
+// ❌ Incorrect
+import { MyComponent } from './snippets/MyComponent'
+import { MyComponent } from '../snippets/MyComponent'
+```
+
+## Styling Components
+
+### Inline Styles
+
+Use inline styles for component-specific styling:
+
+```jsx
+export const StyledCard = ({ title }) => {
+  return (
+    <div style={{
+      padding: '1.5rem',
+      border: '1px solid #e5e7eb',
+      borderRadius: '0.5rem',
+      backgroundColor: '#ffffff',
+    }}>
+      <h3>{title}</h3>
+    </div>
+  )
+}
+```
+
+### CSS Classes
+
+Reference CSS classes defined in `style.css`:
+
+```jsx
+export const GlossaryCard = ({ term }) => {
+  return (
+    <div className="glossary-card">
+      <h3>{term}</h3>
+    </div>
+  )
+}
+```
+
+## Testing Components
+
+1. **Create the component** in `/snippets/YourComponent.jsx`
+2. **Import it** in a test MDX file
+3. **Run the dev server**: `mintlify dev`
+4. **Check the browser** to verify rendering
+5. **Test interactivity** (hover, click, etc.)
+
+## Troubleshooting
+
+### Component Not Rendering
+
+- ✅ Check file extension is `.jsx` (not `.mdx`)
+- ✅ Verify import path uses `/snippets/ComponentName.jsx`
+- ✅ Ensure component is exported: `export const ComponentName = ...`
+- ✅ Check for syntax errors in the component
+
+### SSR Issues
+
+- ✅ Avoid `'use client'` directive
+- ✅ Don't use browser-only APIs in component body
+- ✅ Use event handlers for client-side interactivity
+- ✅ Keep components as pure functions
+
+### Styling Issues
+
+- ✅ Use inline styles or CSS classes
+- ✅ Check CSS specificity if styles aren't applying
+- ✅ Verify CSS file is loaded in `docs.json`
+
+## Additional Resources
+
+- [Mintlify React Components Documentation](https://www.mintlify.com/docs/customize/react-components)
+- [MDX Documentation](https://mdxjs.com/)
+- [React Server Components](https://react.dev/reference/rsc/server-components)
+
+## Summary
+
+- ✅ Place components in `/snippets` folder with `.jsx` extension
+- ✅ Use pure React functions (no `'use client'` directive)
+- ✅ Import using absolute paths: `/snippets/ComponentName.jsx`
+- ✅ Event handlers work with SSR and hydrate on client
+- ✅ Accept React nodes as props for flexible content
+- ✅ Use native HTML elements when possible
+- ❌ Avoid browser-only APIs in component body
+- ❌ Don't use `'use client'` directive
+

@@ -592,44 +592,59 @@ article img {
     }
 }
 
-/* Glossary Card Styles */
-.glossary-card {
-    border: 1px solid #e5e7eb !important;
-    border-radius: 0.5rem !important;
-    padding: 1.5rem !important;
-    margin-bottom: 1rem !important;
-    background-color: #ffffff !important;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
-    transition: all 0.2s ease !important;
+/* Ensure glossary cards are visible */
+.mdx-content > div[style*="border: 1px solid"] {
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
 }
 
-.glossary-card:hover {
-    border-color: #0c3b43 !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-    transform: translateY(-2px) !important;
+/* Ensure content area shows all content */
+#content-area {
+    overflow: visible !important;
 }
 
-.glossary-card h3 {
-    margin: 0 !important;
-    font-size: 1.25rem !important;
-    font-weight: 600 !important;
-    color: #0c3b43 !important;
-    display: block !important;
+.mdx-content {
+    overflow: visible !important;
 }
 
-.glossary-card > div:first-child {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    margin-bottom: 0.75rem !important;
+/* Fix code block top border cropping - ensure containers don't clip */
+.mdx-content,
+.mdx-content > *,
+.mdx-content > div {
+    overflow: visible !important;
 }
 
-.glossary-card > div:last-child {
-    color: #4b5563 !important;
-    line-height: 1.6 !important;
-    font-size: 0.9375rem !important;
-    display: block !important;
+/* Ensure code-block wrapper doesn't clip borders - only the wrapper should have border */
+.mdx-content .code-block,
+.mdx-content div[class*="code-block"] {
+    overflow: visible !important;
+    clip-path: none !important;
 }
 
+/* Remove ALL borders from ALL nested elements inside code-block to prevent double borders */
+.mdx-content .code-block *,
+.mdx-content div[class*="code-block"] * {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* But keep the wrapper's border - reset it explicitly */
+.mdx-content .code-block {
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* .dark .mdx-content .code-block,
+.dark .mdx-content div[class*="code-block"] {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+} */
+
+/* Ensure Shiki code blocks are fully visible
+.mdx-content pre.shiki,
+.mdx-content pre[class*="shiki"] {
+    overflow: visible !important;
+    clip-path: none !important;
+} */
