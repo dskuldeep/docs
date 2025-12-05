@@ -1,0 +1,207 @@
+---
+title: "AI & Models"
+description: "Machine learning models, tokens, and AI concepts"
+---
+
+import { GlossaryCard } from '/snippets/GlossaryCard'
+
+<GlossaryCard 
+  term="Model"
+  category="AI"
+  definition={
+    <>
+      A machine learning model that processes input and generates output. Maxim AI offers various models optimized for different use cases, including:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li><strong>Text generation models</strong>: For natural language processing</li>
+        <li><strong>Embedding models</strong>: For semantic search and similarity</li>
+        <li><strong>Fine-tuned models</strong>: Custom models trained on specific datasets</li>
+      </ul>
+      <p style={{ marginTop: '0.75rem', marginBottom: '0' }}>
+        Learn more about available models in our <a href="https://www.getmaxim.ai/docs/models" style={{ color: '#0c3b43', textDecoration: 'none' }}><strong>model documentation</strong></a>.
+      </p>
+    </>
+  }
+  link={{
+    href: "https://www.getmaxim.ai/docs/models",
+    text: "View Model Documentation"
+  }}
+/>
+
+<GlossaryCard 
+  term="Token"
+  category="AI"
+  definition={
+    <>
+      A unit of text that the AI model processes. Approximately <strong>1 token = 4 characters</strong> or <strong>0.75 words</strong> in English. Token usage determines API costs, so understanding tokenization helps optimize your usage and costs.
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Temperature"
+  category="AI"
+  definition={
+    <>
+      A parameter (0-1) that controls the randomness of AI responses:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li><strong>Lower values (0.1-0.5)</strong>: Produce more consistent, deterministic outputs</li>
+        <li><strong>Higher values (0.7-1.0)</strong>: Produce more creative, varied outputs</li>
+      </ul>
+      <p style={{ marginTop: '0.75rem', marginBottom: '0' }}>
+        Use lower temperature for factual responses and higher temperature for creative tasks.
+      </p>
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Embedding"
+  category="AI"
+  definition={
+    <>
+      A numerical representation of text, images, or other data in a high-dimensional vector space. Embeddings capture semantic meaning and enable:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li><strong>Semantic search</strong>: Find similar content based on meaning</li>
+        <li><strong>Clustering</strong>: Group similar items together</li>
+        <li><strong>Recommendations</strong>: Suggest relevant content</li>
+      </ul>
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Fine-tuning"
+  category="AI"
+  definition={
+    <>
+      The process of training a pre-trained model on a specific dataset to improve its performance on particular tasks. Fine-tuning allows you to:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li>Adapt models to your specific use case</li>
+        <li>Improve accuracy on domain-specific tasks</li>
+        <li>Customize model behavior and outputs</li>
+      </ul>
+      <p style={{ marginTop: '0.75rem', marginBottom: '0' }}>
+        Learn more about <a href="https://www.getmaxim.ai/docs/fine-tuning" style={{ color: '#0c3b43', textDecoration: 'none' }}><strong>fine-tuning with Maxim AI</strong></a>.
+      </p>
+    </>
+  }
+  link={{
+    href: "https://www.getmaxim.ai/docs/fine-tuning",
+    text: "Learn About Fine-tuning"
+  }}
+/>
+
+<GlossaryCard 
+  term="Prompt"
+  category="AI"
+  definition={
+    <>
+      The input text provided to an AI model to generate a response. Effective prompts should be:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li><strong>Clear and specific</strong>: Clearly state what you want</li>
+        <li><strong>Well-structured</strong>: Use proper formatting and organization</li>
+        <li><strong>Contextual</strong>: Include relevant background information</li>
+      </ul>
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Prompt Engineering"
+  category="AI"
+  definition={
+    <>
+      The practice of designing and optimizing prompts to achieve desired outputs from AI models. Key techniques include:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li><strong>Few-shot learning</strong>: Providing examples in the prompt</li>
+        <li><strong>Chain of thought</strong>: Encouraging step-by-step reasoning</li>
+        <li><strong>Role assignment</strong>: Defining the AI's role or persona</li>
+      </ul>
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Max Tokens"
+  category="AI"
+  definition={
+    <>
+      The maximum number of tokens that can be generated in a single API response. Setting <code>max_tokens</code> helps:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li>Control response length</li>
+        <li>Manage API costs</li>
+        <li>Ensure responses fit within context windows</li>
+      </ul>
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Top-p (Nucleus Sampling)"
+  category="AI"
+  definition={
+    <>
+      An alternative to temperature for controlling randomness. Top-p considers tokens with cumulative probability mass up to the threshold:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li><strong>Lower values (0.1-0.5)</strong>: More focused, deterministic outputs</li>
+        <li><strong>Higher values (0.7-0.9)</strong>: More diverse outputs</li>
+      </ul>
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Tokenization"
+  category="AI"
+  definition={
+    <>
+      The process of breaking down text into smaller units (tokens) that AI models can process. Tokenization affects:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li>How text is interpreted by the model</li>
+        <li>Token counts and API costs</li>
+        <li>Model performance and accuracy</li>
+      </ul>
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Base Model"
+  category="AI"
+  definition={
+    <>
+      The foundational machine learning model before any fine-tuning or customization. Base models are pre-trained on large datasets and serve as the starting point for creating specialized models. Maxim AI offers various base models optimized for different tasks.
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Completion"
+  category="AI"
+  definition={
+    <>
+      The output generated by an AI model in response to a prompt. Completions can be:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li><strong>Text completions</strong>: Continuing or finishing a text prompt</li>
+        <li><strong>Chat completions</strong>: Conversational responses in a chat format</li>
+        <li><strong>Code completions</strong>: Generating code snippets</li>
+      </ul>
+    </>
+  }
+/>
+
+<GlossaryCard 
+  term="Function Calling"
+  category="AI"
+  definition={
+    <>
+      A feature that allows AI models to call external functions or tools during conversation. Function calling enables models to:
+      <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.5rem' }}>
+        <li>Access real-time data (weather, stock prices, etc.)</li>
+        <li>Perform actions (send emails, update databases)</li>
+        <li>Integrate with external APIs and services</li>
+      </ul>
+    </>
+  }
+/>
+

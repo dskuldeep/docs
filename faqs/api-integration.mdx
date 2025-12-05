@@ -1,0 +1,368 @@
+# API & Integration
+
+Developer resources and API documentation.
+
+## API Overview
+
+The Maxim AI API is organized around REST principles with predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes.
+
+### Base URL
+
+```
+https://api.maxim-ai.com/v1
+```
+
+### Authentication
+
+All API requests require authentication using Bearer tokens:
+
+```bash
+Authorization: Bearer YOUR_API_KEY
+```
+
+<Tip>
+Get your API key from the [Dashboard](https://dashboard.maxim-ai.com/api-keys).
+</Tip>
+
+## Quick Start Examples
+
+### Chat Completions
+
+The most common endpoint for conversational AI:
+
+```python
+from maxim_ai import MaximAI
+
+client = MaximAI(api_key="your_api_key")
+
+response = client.chat.complete(
+    model="maxim-1",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Explain quantum computing in simple terms."}
+    ],
+    temperature=0.7,
+    max_tokens=200
+)
+
+print(response.choices[0].message.content)
+```
+
+### Streaming Responses
+
+Stream responses for better UX in real-time applications:
+
+```javascript
+import { MaximAI } from '@maxim-ai/sdk';
+
+const client = new MaximAI({ apiKey: process.env.MAXIM_AI_API_KEY });
+
+const stream = await client.chat.stream({
+  model: 'maxim-1',
+  messages: [{ role: 'user', content: 'Write a poem about AI' }],
+  stream: true
+});
+
+for await (const chunk of stream) {
+  process.stdout.write(chunk.choices[0]?.delta?.content || '');
+}
+```
+
+### Function Calling
+
+Enable AI to interact with external tools:
+
+```python
+functions = [
+    {
+        "name": "get_weather",
+        "description": "Get the current weather in a location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "City name, e.g. San Francisco"
+                },
+                "unit": {
+                    "type": "string",
+                    "enum": ["celsius", "fahrenheit"]
+                }
+            },
+            "required": ["location"]
+        }
+    }
+]
+
+response = client.chat.complete(
+    model="maxim-1",
+    messages=[{"role": "user", "content": "What's the weather in Tokyo?"}],
+    functions=functions,
+    function_call="auto"
+)
+
+# Check if function was called
+if response.choices[0].message.function_call:
+    function_name = response.choices[0].message.function_call.name
+    function_args = response.choices[0].message.function_call.arguments
+    # Execute your function here
+```
+
+### Image Understanding
+
+Analyze images with Maxim-Vision:
+
+```python
+response = client.chat.complete(
+    model="maxim-vision",
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "text", "text": "What's in this image?"},
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://example.com/image.jpg"
+                    }
+                }
+            ]
+        }
+    ]
+)
+```
+
+### Embeddings
+
+Generate embeddings for semantic search:
+
+```python
+response = client.embeddings.create(
+    model="maxim-embed",
+    input=["Your text here", "Another text"]
+)
+
+embeddings = [item.embedding for item in response.data]
+```
+
+## SDKs & Libraries
+
+### Official SDKs
+
+| Language | Package | Installation |
+|----------|---------|-------------|
+| Python | `maxim-ai` | `pip3 install maxim-ai` |
+| Node.js | `@maxim-ai/sdk` | `npm install @maxim-ai/sdk` |
+| Go | `maxim-ai/go-sdk` | `go get github.com/maxim-ai/go-sdk` |
+| Ruby | `maxim-ai` | `gem install maxim-ai` |
+| Java | `maxim-ai-java` | Maven/Gradle |
+| .NET | `Maxim.AI` | `dotnet add package Maxim.AI` |
+
+### Community Libraries
+
+- **PHP:** [maxim-ai/php-client](https://github.com/maxim-ai/php-client)
+- **Rust:** [maxim-ai-rs](https://crates.io/crates/maxim-ai)
+- **Swift:** [MaximAI-Swift](https://github.com/maxim-ai/swift-sdk)
+- **Kotlin:** [maxim-ai-kotlin](https://github.com/maxim-ai/kotlin-sdk)
+
+## API Reference
+
+### Endpoints
+
+#### POST /v1/chat/completions
+Create a chat completion.
+
+**Request Body:**
+```json
+{
+  "model": "maxim-1",
+  "messages": [
+    {"role": "user", "content": "Hello!"}
+  ],
+  "temperature": 0.7,
+  "max_tokens": 150,
+  "stream": false
+}
+```
+
+**Response:**
+```json
+{
+  "id": "chatcmpl-abc123",
+  "object": "chat.completion",
+  "created": 1677858242,
+  "model": "maxim-1",
+  "choices": [{
+    "message": {
+      "role": "assistant",
+      "content": "Hello! How can I help you today?"
+    },
+    "finish_reason": "stop",
+    "index": 0
+  }],
+  "usage": {
+    "prompt_tokens": 10,
+    "completion_tokens": 9,
+    "total_tokens": 19
+  }
+}
+```
+
+#### POST /v1/embeddings
+Create embeddings for text.
+
+#### POST /v1/images/generations
+Generate images from text prompts.
+
+#### POST /v1/fine-tunes
+Create a fine-tuning job.
+
+<Info>
+Full API reference available at [api.maxim-ai.com/docs](https://api.maxim-ai.com/docs)
+</Info>
+
+## Rate Limits
+
+Rate limits vary by plan:
+
+| Plan | Requests/min | Tokens/min |
+|------|-------------|------------|
+| Free | 20 | 40,000 |
+| Pro | 500 | 500,000 |
+| Enterprise | Custom | Custom |
+
+### Handle Rate Limits
+
+Implement exponential backoff:
+
+```python
+import time
+from maxim_ai import MaximAI, RateLimitError
+
+def make_request_with_backoff(client, **kwargs):
+    max_retries = 5
+    for i in range(max_retries):
+        try:
+            return client.chat.complete(**kwargs)
+        except RateLimitError:
+            if i == max_retries - 1:
+                raise
+            wait = (2 ** i) + random.random()
+            time.sleep(wait)
+```
+
+## Webhooks
+
+Receive real-time notifications for events:
+
+### Supported Events
+- `fine_tune.completed` - Fine-tuning job finished
+- `fine_tune.failed` - Fine-tuning job failed
+- `usage.threshold` - Usage threshold reached
+- `key.rotated` - API key rotated
+
+### Setup Webhooks
+
+1. Go to Dashboard → Webhooks
+2. Add your endpoint URL
+3. Select events to subscribe to
+4. Verify the webhook with test event
+
+Example webhook handler:
+```python
+from flask import Flask, request
+import hmac
+import hashlib
+
+app = Flask(__name__)
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    # Verify signature
+    signature = request.headers.get('X-Maxim-Signature')
+    payload = request.get_data()
+    
+    expected = hmac.new(
+        webhook_secret.encode(),
+        payload,
+        hashlib.sha256
+    ).hexdigest()
+    
+    if signature != expected:
+        return 'Invalid signature', 401
+    
+    event = request.json
+    if event['type'] == 'fine_tune.completed':
+        # Handle completion
+        pass
+    
+    return 'OK', 200
+```
+
+## Integration Examples
+
+### Chatbot Integration
+
+```javascript
+// Express.js chatbot endpoint
+app.post('/chat', async (req, res) => {
+  const { message, conversationId } = req.body;
+  
+  // Retrieve conversation history
+  const history = await getConversation(conversationId);
+  
+  const response = await client.chat.complete({
+    model: 'maxim-1',
+    messages: [
+      ...history,
+      { role: 'user', content: message }
+    ]
+  });
+  
+  // Save to conversation history
+  await saveMessage(conversationId, message, response);
+  
+  res.json({ reply: response.choices[0].message.content });
+});
+```
+
+### Semantic Search
+
+```python
+# Index documents
+documents = ["doc1 text...", "doc2 text...", "doc3 text..."]
+embeddings = client.embeddings.create(
+    model="maxim-embed",
+    input=documents
+).data
+
+# Store embeddings in vector database (e.g., Pinecone, Weaviate)
+
+# Search
+query = "user search query"
+query_embedding = client.embeddings.create(
+    model="maxim-embed",
+    input=[query]
+).data[0].embedding
+
+# Find similar documents using cosine similarity
+results = vector_db.search(query_embedding, top_k=5)
+```
+
+## Best Practices
+
+1. **Cache Responses** - Reduce API calls for repeated queries
+2. **Batch Requests** - Process multiple inputs efficiently  
+3. **Async Processing** - Don't block on API calls
+4. **Error Handling** - Implement robust retry logic
+5. **Monitor Usage** - Track tokens and costs
+6. **Optimize Prompts** - Shorter prompts = lower costs
+
+## Support & Resources
+
+- **API Documentation:** [api.maxim-ai.com/docs](https://api.maxim-ai.com/docs)
+- **Code Examples:** [github.com/maxim-ai/examples](https://github.com/maxim-ai/examples)
+- **Community Forum:** [community.maxim-ai.com](https://community.maxim-ai.com)
+- **Status Page:** [status.maxim-ai.com](https://status.maxim-ai.com)
+
+

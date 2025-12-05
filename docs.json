@@ -1,122 +1,116 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "palm",
+  "name": "Maxim AI Resources Portal",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#0C3B43",
+    "light": "#07C983"
+  },
+  "appearance": {
+    "default": "light",
+    "strict": true
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "FAQs",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "FAQs",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "faqs",
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "faqs/getting-started/what-is-maxim-ai",
+                  "faqs/getting-started/quick-start"
+                ]
+              },
+              "faqs/products-features",
+              "faqs/api-integration",
+              "faqs/account-billing",
+              "faqs/security-privacy",
+              "faqs/technical-support"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Guides",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Guides",
             "pages": [
-              "api-reference/introduction"
+              "guides",
+              "guides/getting-started",
+              "guides/integration",
+              "guides/best-practices",
+              "guides/advanced"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Glossary",
+        "groups": [
           {
-            "group": "Endpoint examples",
+            "group": "Glossary",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "glossary",
+              "glossary/authentication-security",
+              "glossary/ai-models",
+              "glossary/technical"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/light.svg",
+    "href": "https://www.getmaxim.ai"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Home",
+        "href": "https://www.getmaxim.ai"
+      },
+      {
+        "label": "Blog",
+        "href": "https://www.getmaxim.ai/blog"
+      },
+      {
+        "label": "Pricing",
+        "href": "https://www.getmaxim.ai/pricing"
+      },
+      {
+        "label": "Get started",
+        "href": "https://app.getmaxim.ai/sign-up"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Book a demo",
+      "href": "https://www.getmaxim.ai/demo"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/getmaximai",
+      "github": "https://github.com/maximhq",
+      "linkedin": "https://linkedin.com/company/maxim-ai"
+    }
+  },
+  "integrations": {
+    "intercom": {
+      "appId": "glx5mihe"
+    },
+    "posthog": {
+      "apiKey": "phc_tIH4RrILTB5RdiI22hDijKui0K8c4PNGfaPIoAA5Lcj",
+      "apiHost": "https://ph.getmaxim.ai"
     }
   }
 }
