@@ -19,7 +19,7 @@
           {
             "group": "FAQs",
             "pages": [
-              "faqs",
+              "faqs/overview",
               {
                 "group": "Getting Started",
                 "pages": [
