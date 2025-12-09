@@ -1,6 +1,10 @@
-export const GlossaryCard = ({ term, definition, category, link }) => {
+export const GlossaryCard = ({ term, definition, category, link, children }) => {
+  // Use children if provided, otherwise fall back to definition prop for backward compatibility
+  const content = children || definition;
+  const isStringContent = typeof content === 'string';
+
   return (
-    <div 
+    <div
       className="glossary-card"
       style={{
         border: '1px solid #e5e7eb',
@@ -51,17 +55,20 @@ export const GlossaryCard = ({ term, definition, category, link }) => {
           </span>
         )}
       </div>
-      <div style={{
-        color: '#4b5563',
-        lineHeight: '1.6',
-        fontSize: '0.9375rem',
-      }}>
-        {definition}
+      <div
+        className={!isStringContent ? "glossary-mdx-content" : ""}
+        style={{
+          color: '#4b5563',
+          lineHeight: '1.6',
+          fontSize: '0.9375rem',
+          whiteSpace: isStringContent ? 'pre-line' : undefined,
+        }}>
+        {content}
       </div>
       {link && link.href && (
         <div style={{ marginTop: '0.75rem' }}>
-          <a 
-            href={link.href} 
+          <a
+            href={link.href}
             style={{
               color: '#0c3b43',
               textDecoration: 'none',

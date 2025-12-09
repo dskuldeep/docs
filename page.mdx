@@ -1,0 +1,468 @@
+# Glossary
+
+Definitions of key terms and concepts used throughout Maxim AI documentation.
+
+import { FAQItem } from '../components/FAQItem'
+import {AlertBox} from '../components/AlertBox'
+import { FeatureCard } from '../components/FeatureCard'
+
+
+## A
+
+<FeatureCard
+  title="Agent Observability"
+  description=" [Agent observability](https://www.ibm.com/think/insights/ai-agent-observability) is the process of monitoring and understanding the end-to-end behaviors of an agentic ecosystem, including any interactions that the AI agent may have with large language models and external tools."
+  sections={[
+    
+    {
+      heading: 'Core Components',
+      details: [
+        '- *Performance Monitoring*: It involves monitoring the performance of the models themselves. Developers can track various metrics such as model accuracy, prediction latency, and resource utilization',
+        "- *Data and Model Drift Detection*: Data drift occurs when the statistical properties of a machine learning model's training data change. It can be a covariate shift where input feature distributions change or a model drift where the relationship between the input and target variables becomes invalid",
+        '- *Continuous Monitoring and Distributed Tracing*: Continuous monitoring tracks agent actions, decisions, and interactions in real time to surface anomalies, unexpected behaviors, or performance drift. For multi-agent systems, distributed tracing becomes essential to understand how agents interact and collaborate across complex workflows.',
+        '- *Quality and Safety Metrics*: Observability and transparency are critical to detect biases, understand limitations, and identify potential issues.',
+        '- *Tool Interaction Monitoring*: AI agents interact with various external tools and APIs to accomplish tasks. Monitoring these interactions is essential for understanding agent capabilities and identifying potential failure points.', 
+    
+      ],
+    },
+  
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- See how you can build [Observable AI Agents](https://www.getmaxim.ai/products/agent-observability) with Maxim.',
+        '- [AI Agent Observability](https://www.getmaxim.ai/blog/tag/observability/)',
+        '- [Top AI Observability Tools in 2025: The Ultimate Guide](https://www.getmaxim.ai/articles/top-ai-observability-tools-in-2025-the-ultimate-guide/)',
+        '- [Top AI Observability Tools in 2025: The Ultimate Guide](https://www.getmaxim.ai/articles/top-ai-observability-tools-in-2025-the-ultimate-guide/)',
+
+
+      ] 
+    },
+  ]}
+/>
+
+
+<FeatureCard
+  title="Agentic workflow"
+  description="An [agentic workflow](https://www.ibm.com/think/topics/agentic-workflows) is an AI-driven process in which autonomous artificial intelligence agents make decisions, execute tasks, and coordinate actions with minimal human intervention to achieve specific goals. These workflows employ detailed instructions and operational sequences to solve complex tasks across diverse domains.([Zhang, J., et al.](https://arxiv.org/abs/2410.10762))"
+  sections={[
+   
+    {
+      heading: 'Core components',
+      details: [
+        '- *AI Agents*:  Systems that autonomously perform tasks by designing workflows and using available tools.',
+        '- *Large Language Models (LLMs)*:  crucial for processing and generating natural language.',
+        "- *Tool Use*: External resources like datasets, web searches, and APIs that extend an LLM's capabilities beyond its training data.",
+        '- *Memory Systems*: Store context across interactions short-term for conversation history, long-term for accumulated knowledge.',
+        '- *Reasoning Capabilities*: Enable iterative problem-solving through planning and reflection.',
+        
+      ],
+    },
+    
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- [Evaluating Agentic Workflows: The Essential Metrics That Matter](https://www.getmaxim.ai/blog/evaluating-agentic-workflows)',
+        '- [How to Implement Observability in Multi-Step Agentic Workflows: A Technical Guide with Code Examples](https://www.getmaxim.ai/articles/how-to-implement-observability-in-multi-step-agentic-workflows-a-technical-guide-with-code-examples/)',
+      ],
+    },
+  ]}
+/>
+
+<FeatureCard
+  title="Audit Logs"
+  description="[Audit logging](https://www.datadoghq.com/knowledge-center/audit-logging/) is the process of documenting activity within the software systems used across an organization, where audit logs record the occurrence of an event, the time at which it occurred, the responsible user or service, and the impacted entity. A series of audit logs is called an audit trail because it shows a sequential record of all the activity on a specific system. By reviewing audit logs and correlated audit trails, systems administrators can track user activity, and security teams can investigate breaches and ensure compliance with regulatory requirements (Datadog, 2022).
+
+"
+  sections={[
+    
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- [Audit logs, Guardrails, Responses API support, and more](https://www.getmaxim.ai/blog/audit-logs-guardrails-responses-api-support/)',
+        '- [Datadog. (2022, March 9). Audit Logging: What It Is & How It Works.](https://www.datadoghq.com/knowledge-center/audit-logging/)',
+        '- [SANS Institute. (2013). "Log Management Guide: Building a Logging Infrastructure."](https://www.sans.org/white-papers/)',
+
+      ]
+    },
+  ]}
+/>
+
+
+## C
+
+<FeatureCard
+  title="CI/CD"
+  description="[CI/CD](https://www.redhat.com/en/topics/devops/what-is-ci-cd) is the combined practices of continuous integration (CI) and continuous delivery (CD). CI/CD aims to streamline and accelerate the software development lifecycle, where continuous integration refers to the practice of automatically and frequently integrating code changes into a shared source code repository, and continuous delivery and/or deployment is a two-part process that refers to the integration, testing, and delivery of code changes."
+  sections={[
+    
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- [Prompt CI/CD Integration](https://www.redhat.com/en/topics/devops/what-is-ci-cd)',
+        '- [Wikipedia. (2025, August 25). CI/CD.](https://en.wikipedia.org/wiki/CI/CD)',
+
+      ]
+    },
+  ]}
+/>
+
+<FeatureCard
+  title="Cosine Similarity"
+  description="[Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) is a measure of similarity between two non-zero vectors defined in an inner product space, where cosine similarity is the cosine of the angle between the vectors; that is, it is the dot product of the vectors divided by the product of their lengths (Wikipedia, 2025)."
+  sections={[
+    {
+      heading: 'Mathematical Foundation',
+      details: "Given two n-dimensional vectors of attributes, A and B, the cosine similarity, cos(theta), is represented using a dot product and magnitude as the dot product of the vectors divided by the product of their magnitudes. Cosine similarity values range from -1 to 1: a cosine similarity score of 1 indicates that the vectors are pointing in the exact same direction, a score of 0 indicates that the vectors are orthogonal meaning they have no directional similarity, and a score of -1 indicates that the vectors point in exactly opposite directions.",
+    },
+   
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- [IBM. (2024). What Is Cosine Similarity? IBM Think Topics.](https://www.ibm.com/think/topics/cosine-similarity)',
+        '- [Wikipedia. (2025, September 17). Cosine similarity.](https://en.wikipedia.org/wiki/Cosine_similarity)',
+
+      ]
+    },
+  ]}
+/>
+
+## D
+
+<FeatureCard
+  title="Distributed Tracing"
+  description="[Distributed tracing](https://signoz.io/blog/distributed-tracing-in-microservices/) is a method to track user requests in their entirety as it travels across components of a distributed system like microservices-based applications, where a context ID is passed along the path of a user request as it traverses different nodes, protocols, and networks, enabling the reconstruction of the entire user request in a sequential flow that shows exactly how a system processed a request ([SigNoz, 2023](https://signoz.io/blog/distributed-tracing-in-microservices/))."
+  sections={[
+  
+    {
+      heading: 'Core components',
+      details: [
+        '- *Sessions*: top level entity that captures all the multi-turn interactions of your system.',
+        '- *Traces*: a trace is the complete processing of a request through a distributed system, including all the actions between the request and the response.',
+        '- *Spans*: Spans represent a logical unit of work in completing a user request or transaction, where a span might be an API call, user authentication, or enabling storage access.',
+        '- *Event*: Events mark significant points within a span or a trace recording instantaneous occurrences that provide additional context for understanding system behavior.',
+        '- *Generation*: A Generation represents a single Large Language Model (LLM) call within a trace or span.', 
+        '- *Tool Call*: Tool Call represents an external system or service call done based on an LLM response.',
+        '- *Context propagation*: Ensures trace IDs and metadata flow consistently across services via OpenTelemetry.',
+        
+      ],
+    },
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- Learn more about [Distributed Tracing](https://www.getmaxim.ai/docs/tracing/concepts#trace)',
+        '- [Top AI Observability Tools in 2025: The Ultimate Guide](https://www.getmaxim.ai/articles/top-ai-observability-tools-in-2025-the-ultimate-guide/)',
+        '- [Agent Tracing for Debugging Multi-Agent AI Systems](https://www.getmaxim.ai/articles/agent-tracing-for-debugging-multi-agent-ai-systems/)',
+      ]
+    },
+  ]}
+/>
+
+<FeatureCard
+  title="Drift"
+  description="[Model drift](https://www.ibm.com/think/topics/model-drift) refers to the degradation of machine learning model performance due to changes in data or in the relationships between input and output variables, where model drift also known as model decay can negatively impact model performance resulting in faulty decision-making and bad predictions."
+  sections={[
+  
+    {
+      heading: 'Mitigation',
+      details: "The most accurate way to detect model drift is by comparing the predicted values from a given machine learning model to the actual values, where the accuracy of a model worsens as the predicted values deviate farther from the actual values. To detect concept drift you can monitor model quality using metrics like accuracy or mean error. You can use [AI Agent observability and Evaliuation platforms](https://www.getmaxim.ai/) to track model metrics and easily detect model drift.",
+    },
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- [A Comprehensive Guide to Preventing AI Agent Drift Over Time](https://www.getmaxim.ai/articles/a-comprehensive-guide-to-preventing-ai-agent-drift-over-time/)',
+        '- [Understanding AI Agent Reliability: Best Practices for Preventing Drift in Production Systems](https://www.getmaxim.ai/articles/understanding-ai-agent-reliability-best-practices-for-preventing-drift-in-production-systems/)',
+
+      ]
+    },
+  ]}
+/>
+
+
+## F
+
+<FeatureCard
+  title="F1 score"
+  description="The [F1 score](https://arxiv.org/abs/2010.16061) is a statistical measure used to evaluate the performance of classification models, particularly in machine learning and information retrieval systems."
+  sections={[
+    
+    {
+      heading: 'How is it calculated',
+      details: '![F1 Score Formula|200x70](/f1-score.avif)',
+    },
+  ]}
+  
+/>
+
+
+## G
+
+<FeatureCard
+  title="AI Gateway"
+  description="An [AI Gateway](https://www.ibm.com/think/topics/ai-gateway) is a specialized middleware platform that facilitates the integration, deployment and management of artificial intelligence (AI) tools, including large language models (LLMs) and other AI services, in an enterprise environment([IBM](https://www.ibm.com/think/topics/ai-gateway)). It sits between applications and AI models, handling essential functions such as request routing, authentication, authorization, rate limiting, and traffic monitoring. ([Kong AI](https://konghq.com/blog/enterprise/what-is-an-ai-gateway))"
+  sections={[
+    
+    {
+      heading: 'Key Capabilities',
+      details: [
+        '- *Unified Access and Abstraction*: Provides a single API endpoint to access multiple AI model providers through one consistent interface.',
+        '- *Security and Compliance*: Secures access via managed identities, removes PII, and prevents unauthorized data exposure.',
+        '- *Request Management and Optimization*: Enforces policies for rate limiting, security, and compliance while enabling smart routing and fallback',
+        '- *Observability and Cost Control*: Tracks token usage, quotas, error rates, and costs across providers with detailed logging.',
+        '- *Model Orchestration*: Centralizes management of multiple AI models including access controls, monitoring, and deployment.',
+      ],
+    },
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- [Bifrost](https://www.getmaxim.ai/bifrost)- the fastest lLM Gateway',
+        '- [What is an LLM Gateway? A Deep Dive into the Backbone of Scalable AI Applications](https://www.getmaxim.ai/articles/what-is-an-llm-gateway-a-deep-dive-into-the-backbone-of-scalable-ai-applications/)',
+        "- [Best LLM Gateways in 2025: Features, Benchmarks, and Builder's Guide](https://www.getmaxim.ai/articles/best-llm-gateways-in-2025-features-benchmarks-and-builders-guide/)",
+        '- [Bifrost Github](https://github.com/maximhq/bifrost)',
+
+      ]
+    },
+  ]}
+/>
+
+<FeatureCard
+  title="Guardrails"
+  description="[Guardrails](https://www.ibm.com/think/topics/ai-guardrails) are safety mechanisms designed to ensure artificial intelligence applications, particularly large language models (LLMs), deliver trustworthy outputs while protecting against vulnerabilities such as harmful content or sensitive data exposure ([IBM](https://www.ibm.com/think/topics/ai-guardrails)). These systems help ensure that an organization's AI tools, and their application in business, reflect the organization's standards, policies, and values ([McKinsey](https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-are-ai-guardrails))."
+  sections={[
+   
+    {
+      heading: 'Core Components',
+      details: [
+        '- *Appropriateness Guardrails*: Check if the content generated by AI is toxic, harmful, biased, or based on stereotypes and filter out any such inappropriate content before it reaches customers',
+        "- *Hallucination Guardrails*: Ensure that AI-generated content doesn't contain information that is factually wrong or misleading",
+        '- *Regulatory Compliance Guardrails*:Validate that generated content meets regulatory requirements, whether those requirements are general or specific to the industry or use case.',
+        "- *Security Guardrails*: Ensure the app complies with laws and regulations, handling personal data and protecting individuals' rights.",
+      ],
+    },
+  
+    {
+      heading: 'Additional Resources',
+      details: [
+      "- See how Maxim's Bifrost integrates with leading guardrail providers to offer comprehensive protection.",
+      '- [Guardrails in Agent Workflows: Prompt-Injection Defenses, Tool-Permissioning, and Safe Fallbacks](https://www.getmaxim.ai/articles/guardrails-in-agent-workflows-prompt-injection-defenses-tool-permissioning-and-safe-fallbacks/)',
+      ]
+    },
+
+  ]}
+/>
+
+
+## H 
+
+<FeatureCard
+  title="Hallucination"
+  description="[AI hallucinations](https://www.ibm.com/think/topics/ai-hallucinations) occur when a large language model (LLM) perceives patterns or objects that are nonexistent, creating nonsensical or inaccurate outputs ([IBM](https://www.ibm.com/think/topics/ai-hallucinations)). Large language models are prone to hallucination, generating plausible yet nonfactual content, which raises significant concerns over the reliability of LLMs in real-world information retrieval systems([Huang et al., 2024](https://arxiv.org/abs/2311.05232)). "
+  sections={[
+  
+    {
+      heading: 'Detection and mitigation',
+      details: [
+        '- *Automated Evaluations*: Automated evaluation frameworks are essential for scalable hallucination detection. techniques include LLM-as-judge, statistical and programmatic metrics, and reference based scoring.',
+        '- *Human-in-the-loop evaluations*: Human reviewers validate outputs for domain accuracy, contextual relevance, and subjective criteria.',
+        '- *Real-Time Monitoring and Observability*: Continuous monitoring of production logs and agent traces is vital for catching hallucinations post-deployment. Key practices include distributed tracing, Online evaluations, and custom alerts.',
+      ],
+    },
+   
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- See how you can build robust Evaluation Pipelines with Maxim AI.',
+        '- [AI Hallucinations in 2025: Causes, Impact, and Solutions for Trustworthy AI](https://www.getmaxim.ai/articles/ai-hallucinations-in-2025-causes-impact-and-solutions-for-trustworthy-ai/)',
+        '- [LLM hallucination detection](https://www.getmaxim.ai/blog/llm-hallucination-detection/)',
+
+      ] 
+    },
+  ]}
+/>
+
+
+
+<FeatureCard
+  title="Hyperparameter"
+  description="In machine learning, a [hyperparameter](https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)) is a parameter that can be set in order to define any configurable part of a model's learning process. Hyperparameters 
+can be classified as either model hyperparameters or algorithm hyperparameters."
+  
+/>
+
+
+## L 
+
+<FeatureCard
+  title="Latency"
+  description="[Latency](https://www.ibm.com/think/topics/latency) is a measurement of delay in a system. Network latency is the amount of time it takes for data to travel from one point to another across a network. 
+A network with high latency will have slower response times, while a low-latency network will have faster response times."
+  
+/>
+
+<FeatureCard
+  title="Load Balancing"
+  description="In computing, [load balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) is the process of distributing a set of tasks over a set of resources (computing units), with the aim of making their overall 
+processing more efficient. Load balancing can optimize response time and avoid unevenly overloading some compute nodes while other compute nodes 
+are left idle."
+  sections={[
+  {
+    heading: 'Why it matters',
+    details: 'Load Balancing helps in optimal utilization of resources and hence in enhancing the performance of the system. Load balancers minimize server response time and maximize throughput. ',
+  },
+]}
+/>
+
+
+## M
+
+<FeatureCard
+  title="MCP server"
+  description="The [MCP server](https://en.wikipedia.org/wiki/Model_Context_Protocol) is the external service that provides context, data, or capabilities to the LLM. It helps LLMs by connecting to external systems like databases and web services, translating their responses into a format the LLM can understand which helps developers provide diverse functionalities."
+  
+/>
+
+
+## N 
+
+<FeatureCard
+  title="Noisy data"
+  description="Random or irrelevant data that intervene in learning is termed as [noise](https://en.wikipedia.org/wiki/Noisy_data). In Machine Learning, random or irrelevant data can result in unpredictable situations that are different from what we expected."
+  
+/>
+
+
+<FeatureCard
+  title="Non Determinism"
+  description="In computer science and computer programming, a nondeterministic algorithm is an algorithm that, even for the same input, can exhibit different behaviors on different runs, as opposed to a deterministic algorithm."
+  
+/>
+
+
+
+
+
+## P 
+
+<FeatureCard
+  title="PII"
+  description="Personal data, also known as personal information or [personally identifiable information (PII)](https://en.wikipedia.org/wiki/Personal_data), is any information related to an identifiable person."
+  
+/>
+
+<FeatureCard
+  title="Precision"
+  description="[Precision](https://en.wikipedia.org/wiki/Precision_and_recall) (also called positive predictive value) is the fraction of relevant instances among the retrieved instances. Mathematically, precision is defined as the number of true positives (Tp) over the number of true positives plus the number of false positives (Fp).Perfect precision, indicated by a value of 1, means that every object identified as positive was classified correctly and no false positives exist.er "
+   sections={[
+  {
+    heading: 'How is it calculated',
+    details: '![Precision Formula|300x200](/precision-formula.png)',
+  },
+]}
+/>
+
+
+
+<FeatureCard
+  title="Prompt Engineering"
+  description=" [Prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering) is the practice of writing clear, effective instructions that guide AI models to produce accurate, consistent, and useful outputs."
+  sections={[
+   
+   
+    {
+      heading: 'Additional Resources',
+      details: [
+        '- See how you can do [prompt experimentation](https://www.getmaxim.ai/products/experimentation) with Maxim.',
+        '- [What Is Prompt Engineering? A Comprehensive Guide for Modern AI Teams](https://www.getmaxim.ai/articles/what-is-prompt-engineering-a-comprehensive-guide-for-modern-ai-teams/)',
+  
+      ] 
+    },
+  ]}
+/>
+
+<FeatureCard
+  title="Prompt Injection"
+  description="[Prompt injection](https://en.wikipedia.org/wiki/Prompt_injection) is a cybersecurity exploit in which adversaries craft inputs that appear legitimate but are designed to cause unintended behavior in 
+machine learning models, particularly large language models (LLMs)."
+sections= {[
+  {
+    heading: 'Additional Resources',
+    details: [
+      '- [Prompt Injection: Risks, Defenses, and How To Keep Agents On-Task](https://www.getmaxim.ai/articles/prompt-injection-risks-defenses-and-how-to-keep-agents-on-task-2/)',
+      '- [Best Practices for Prompt Management in AI Applications](https://www.getmaxim.ai/articles/best-practices-for-prompt-management-in-ai-applications/)',
+
+    ]
+  }
+]}
+  
+/>
+
+
+## R 
+
+<FeatureCard
+  title="R Squared"
+  description="In statistics, the [coefficient of determination](https://en.wikipedia.org/wiki/Coefficient_of_determination), is the proportion of the variation in the dependent variable that is predictable from the independent variable(s)."
+   sections={[
+  {
+    heading: 'How is it calculated',
+    details: '![R-Squared Formula|200x50](/rsquare-formula.png)',
+  },
+]}
+/>
+
+<FeatureCard
+  title="Recall"
+  description="[Recall](https://en.wikipedia.org/wiki/Precision_and_recall) (also known as sensitivity) is the fraction of relevant instances that were retrieved. Perfect recall, indicated by a value of 1, means that every relevant observation was identified as such and no positives were ignored."
+   sections={[
+  {
+    heading: 'How is it calculated',
+    details: '![Recall Formula|250x70](/recall_formula.png)',
+  },
+]}
+/>
+
+
+## S 
+
+<FeatureCard
+  title="Semantic Caching"
+  description="A [semantic cache](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/semantic-cache) provides a way for you to use prior user prompts and LLM completions to address similar user prompts using vector similarity search. A 
+semantic cache can reduce latency and save costs in your GenAI applications as making calls to LLMs is often the most costly and highest latency service 
+in such applications."
+  
+/>
+
+<FeatureCard
+  title="Statistical confidence"
+  description="In statistical inference, the concept of a [confidence/statistical distribution (CD)](https://en.wikipedia.org/wiki/Confidence_distribution) has often been loosely referred to as a distribution function on the parameter 
+space that can represent confidence intervals of all levels for a parameter of interest."
+  
+/>
+
+<FeatureCard
+  title="Stress-testing"
+  description="[Stress testing](https://en.wikipedia.org/wiki/Stress_testing) is a form of deliberately intense or thorough testing, used to determine the stability of a given system, critical infrastructure or entity. It involves 
+testing beyond normal operational capacity, often to a breaking point, in order to observe the results."
+  
+/>
+
+## T 
+<FeatureCard
+  title="Throughput"
+  description="[Throughput](https://en.wikipedia.org/wiki/Network_throughput) refers to the rate of message delivery over a communication channel in a communication network, such as Ethernet or packet radio. Throughput is usually 
+measured in bits per second (bit/s, sometimes abbreviated bps), and sometimes in packets per second (p/s or pps) or data packets per time slot."
+
+  
+/>
+
+## V 
+
+<FeatureCard
+  title="Vector Embedding"
+  description="[Vector embeddings](https://www.ibm.com/think/topics/vector-embedding) are numerical representations of data points that express different types of data, including nonmathematical data such as words or 
+images, as an array of numbers that machine learning (ML) models can process."
+  
+/>
+
+
+
+

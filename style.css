@@ -289,6 +289,15 @@ article img {
     height: auto;
 }
 
+/* Remove border and shadow from images in glossary cards */
+/* Supports all image formats: PNG, JPG, JPEG, GIF, WebP, AVIF, SVG, etc. */
+.glossary-card img,
+.glossary-mdx-content img {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0;
+}
+
 /* Footer Styles - Site-wide footer at bottom */
 .section-footer {
     background-color: #0b1a22;
@@ -694,3 +703,15 @@ article img {
     overflow: visible !important;
     clip-path: none !important;
 } */
+
+/* Glossary Card Content Styling */
+.glossary-mdx-content {
+    white-space: pre-line;
+}
+
+/* Reset whitespace for lists to prevent extra spacing/gaps */
+.glossary-mdx-content ul,
+.glossary-mdx-content ol,
+.glossary-mdx-content li {
+    white-space: normal;
+}

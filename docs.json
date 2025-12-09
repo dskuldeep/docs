@@ -58,10 +58,7 @@
           {
             "group": "Glossary",
             "pages": [
-              "glossary",
-              "glossary/authentication-security",
-              "glossary/ai-models",
-              "glossary/technical"
+              "glossary/glossary"
             ]
           }
         ]
