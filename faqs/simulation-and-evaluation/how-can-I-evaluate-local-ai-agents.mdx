@@ -1,0 +1,108 @@
+---
+title: "How can I Evaluate Local AI Agents?"
+description: "Maxim allows you to evaluate AI agents running on your local machine (including those built with frameworks like CrewAI or LangChain) without needing to deploy them to an HTTP endpoint first. This is achieved using the yields_output function in the Maxim SDK, which enables you to pass a local Python function as the subject of your evaluation."
+---
+
+## Why Evaluate Locally?
+
+Evaluating locally is ideal when:
+
+- You are in the active development phase and want to iterate quickly without deployment cycles.
+- Your agent has complex orchestration logic (e.g., multi-agent systems in CrewAI) that is hard to expose via a simple API.
+- You need to capture granular metadata like token usage, cost, and latency directly from your local execution environment.
+
+## How It Works
+
+To test a local agent, you define a wrapper function that accepts `LocalData` (the input row from your dataset) and returns a `YieldedOutput` object containing the agent's response and metadata. Maxim's SDK then iterates through your test dataset, runs this function for each entry, and scores the results.
+
+<Steps>
+<Step title="Define the Agent Wrapper">
+Your function must take `LocalData` as an input and return `YieldedOutput`. This object allows you to report not just the output, but also **retrieved context** (for RAG evaluation), **token usage**, and **costs**.
+</Step>
+<Step title="Run the Evaluation">
+Use the `.yields_output()` method in your test run configuration to execute the local function.
+</Step>
+</Steps>
+## Code Example: Testing a CrewAI Agent
+
+The following example demonstrates how to wrap a CrewAI agent and evaluate it using Maxim:
+
+```python
+from maxim import Maxim
+from maxim.models import (
+    LocalData,
+    YieldedOutput,
+    YieldedOutputCost,
+    YieldedOutputMeta,
+    YieldedOutputTokenUsage,
+    Data
+)
+from crewai import Crew, Agent, Task
+import time
+
+# 1. Define your agent logic wrapper
+def run_crewai_agent(data: LocalData) -> YieldedOutput:
+    start_time = time.time()
+
+    # Extract inputs from the dataset row
+    user_input = data.get("input", "")
+    topic = data.get("topic", "")
+
+    # ... [Initialize your Agents and Tasks here] ...
+
+    # Run the agent
+    crew = Crew(agents=[your_agent], tasks=[your_task])
+    result = crew.kickoff()
+
+    end_time = time.time()
+    latency = end_time - start_time
+
+    # Return the result in Maxim's format
+    return YieldedOutput(
+        data=result.raw,
+        # Pass intermediate steps as context for evaluation
+        retrieved_context_to_evaluate=[
+            task.raw for task in result.tasks_output[:-1]
+        ],
+        meta=YieldedOutputMeta(
+            usage=YieldedOutputTokenUsage(
+                prompt_tokens=result.token_usage.prompt_tokens,
+                completion_tokens=result.token_usage.completion_tokens,
+                total_tokens=result.token_usage.total_tokens,
+                latency=latency,
+            ),
+            cost=YieldedOutputCost(
+                # Calculate actual cost based on model pricing
+                total_cost=0.01
+            ),
+        ),
+    )
+
+# 2. Run the test
+maxim = Maxim({"api_key": "your-api-key"})
+
+result = (
+    maxim.create_test_run(
+        name="Local CrewAI Eval",
+        in_workspace_id="your-workspace-id"
+    )
+    .with_data_structure({
+        "input": "INPUT",
+        "topic": "VARIABLE",
+        "expected_output": "EXPECTED_OUTPUT"
+    })
+    .with_data(test_data) # Your list of test cases
+    .with_evaluators("Faithfulness", "Clarity")
+    .yields_output(run_crewai_agent) # <--- Pass the local function here
+    .run()
+)
+
+print(f"Test run completed! Link: {result.test_run_result.link}")
+
+```
+
+## Best Practices
+
+- **Modular Design:** Break your agent logic into smaller, testable functions so you can wrap them easily.
+- **Metadata Tracking:** Always populate the `YieldedOutputMeta` fields (latency, tokens, cost). This ensures your dashboard reports are accurate and help you track resource consumption.
+- **Context Handling:** If your agent performs retrieval or multi-step reasoning, pass those intermediate outputs in the `retrieved_context_to_evaluate` field. This allows AI evaluators to judge whether the agent's reasoning was sound, not just if the final answer was correct.

@@ -19,35 +19,34 @@
           {
             "group": "FAQs",
             "pages": [
-              "faqs/overview",
               {
-                "group": "Getting Started",
+                "group": "Experimentation",
                 "pages": [
-                  "faqs/getting-started/what-is-maxim-ai",
-                  "faqs/getting-started/quick-start"
+                  "faqs/experimentation/what-is-prompt-engineering",
+                  "faqs/experimentation/how-does-maxim-streamline-the-prompt-engineering-lifecycle",
+                  "faqs/experimentation/how-do-I-version-and-manage-prompts",
+                  "faqs/experimentation/how-to-test-evaluate-and-optimize-prompts"
                 ]
               },
-              "faqs/products-features",
-              "faqs/api-integration",
-              "faqs/account-billing",
-              "faqs/security-privacy",
-              "faqs/technical-support"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Guides",
-            "pages": [
-              "guides",
-              "guides/getting-started",
-              "guides/integration",
-              "guides/best-practices",
-              "guides/advanced",
-              "guides/custom-react-components"
+              {
+                "group": "Simulation and Evaluation",
+                "pages": [
+                  "faqs/simulation-and-evaluation/how-to-evaluate-ai-agents-and-agentic-workflows",
+                  "faqs/simulation-and-evaluation/how-do-I-create-a-custom-evaluator",
+                  "faqs/simulation-and-evaluation/how-does-agent-simulation-help-evaluate-ai-agents",
+                  "faqs/simulation-and-evaluation/how-can-I-evaluate-voice-ai-agents",
+                  "faqs/simulation-and-evaluation/how-can-I-evaluate-local-ai-agents"
+                ]
+              },
+              {
+                "group": "Observability",
+                "pages": [
+                  "faqs/observability/how-can-I-track-token-usage-and-cost-across-different-LLM-models",
+                  "faqs/observability/how-can-I-monitor-complex-ai-agent-workflows-in-production",
+                  "faqs/observability/how-do-I-monitor-tool-calls-in-my-AI-agents",
+                  "faqs/observability/is-maxim-ai-otel-compatible"
+                ]
+              }
             ]
           }
         ]

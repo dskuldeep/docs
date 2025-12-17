@@ -1,0 +1,138 @@
+---
+title: "How do I Evaluate AI Agents and Agentic Workflows?"
+description: "Maxim AI provides a comprehensive framework for evaluating AI agents across their entire development lifecycle. You can evaluate agents using **Offline Evaluation** (pre-deployment testing via simulations and test runs) and **Online Evaluation** (real-time monitoring of production traces). This dual approach ensures your agents maintain context, reason correctly, and execute tools accurately in dynamic, multi-turn scenarios."
+---
+
+## Offline Evaluation: Testing Before Deployment
+
+Offline evaluation enables you to test agents against curated datasets or simulated scenarios before they face real users. 
+Maxim supports multiple methods for this:
+
+### Agent Simulation
+
+[Agent simulations](https://www.getmaxim.ai/docs/simulations/text-simulation/simulation-runs) are the most effective way to test conversational agents. Instead of static input-output pairs, simulations create dynamic interactions between your agent and a user persona to test multi-turn capabilities.
+
+- **Define Personas:** Configure user characteristics (e.g., "impatient customer," "technical user") to test how the agent adapts.
+- **Set Scenarios:** Define the user's goal (e.g., "Process a refund") and the [expected steps](https://www.getmaxim.ai/docs/simulations/text-simulation/simulation-runs#expected-steps) the agent should take.
+- **Validate Context:** Ensure the agent retains information across multiple exchanges.
+
+### HTTP Endpoint Evaluation
+
+If your agent is hosted externally, you can use [HTTP Endpoint Evaluation](https://www.getmaxim.ai/docs/offline-evals/via-ui/agents-via-http-endpoint/quickstart). This enables you to send payloads to your agent’s API endpoint and evaluate the response without code changes.
+
+- **Configuration:** Connect Maxim to your agent's URL.
+- **Payloads:** Map your test dataset columns to your API's input schema (e.g., mapping a `question` column to your API's `messages` body).
+- **Multi-turn Support:** Configure the endpoint to handle conversation history for realistic stateful testing.
+
+### No-Code & Dataset Evaluation
+
+Test your agentic workflows with Datasets and Evaluators in minutes using the [No-Code Agent Builder](https://www.getmaxim.ai/docs/offline-evals/via-ui/agents-via-no-code-builder/quickstart). Alternatively, if you have pre-generated logs, use [Dataset Evaluation](https://www.getmaxim.ai/docs/offline-evals/via-ui/advanced/dataset-evaluation) to score existing outputs without re-running the agent.
+
+## Online Evaluation: Monitoring in Production
+
+Once deployed, use [Online Evaluation](https://www.getmaxim.ai/docs/online-evals/overview) to monitor agent performance in real-time. Maxim uses [Distributed Tracing](https://www.getmaxim.ai/docs/tracing/overview) to capture the hierarchy of agent operations:
+
+- **Sessions:** Evaluate the full multi-turn conversation (e.g., "Did the user achieve their goal?").
+- **Traces:** Evaluate individual interactions or turns within a session.
+- **Spans:** Evaluate specific steps, such as a Retrieval (RAG) step or a [Tool Call](https://www.getmaxim.ai/docs/library/evaluators/pre-built-evaluators/statistical-evaluators/tool-call-accuracy).
+
+
+<Tip> You can configure [Alerts](https://www.getmaxim.ai/docs/online-evals/set-up-alerts-and-notifications) to notify you via Slack or PagerDuty if quality scores drop below your defined threshold.</Tip>
+## Automating Evaluations with the SDK
+
+For Continuous Integration (CI/CD), use the Maxim SDK to trigger evaluations programmatically. The following example demonstrates running a test for an agent:
+
+```python
+from maxim import Maxim
+
+# Initialize the client
+maxim = Maxim({"api_key": "YOUR_API_KEY"})
+
+# Trigger a test run
+result = (
+    maxim.create_test_run(
+        name="Weekly Agent Regression",
+        in_workspace_id="YOUR_WORKSPACE_ID"
+    )
+    # Map dataset columns to your agent's inputs
+    .with_data_structure({
+        "input": "user_query",
+        "context": "retrieved_docs",
+        "expected_output": "ground_truth"
+    })
+    # Link to your existing dataset and prompt version
+    .with_data("dataset-id-uuid")
+    .with_prompt_version_id("prompt-version-uuid")
+    # Attach evaluators
+    .with_evaluators(
+        "Answer Relevance",
+        "Tool Call Accuracy",
+        "Hallucination"
+    )
+    .run()
+)
+
+print(f"Test Run Completed. Results: {result.test_run_result.link}")
+
+```
+
+<Tip>For more details on SDK integration, refer to the [SDK Quickstart guide](https://www.getmaxim.ai/docs/offline-evals/via-sdk/prompts/quickstart).</Tip>
+
+## Evaluators
+
+Maxim supports various types of evaluators. You can use pre-built evaluators from the evaluator store or build your own custom evaluators according to your specific use case.
+
+| Evaluator Type | Description | Examples | Documentation |
+| --- | --- | --- | --- |
+| **AI Evaluators** | Uses LLMs to judge subjective quality | Faithfulness, Hallucination, Tone | [AI Evaluators](https://www.getmaxim.ai/docs/library/evaluators/pre-built-evaluators/ai-evaluators/overview) |
+| **Statistical Evaluators** | Standard ML metrics for text comparison | BLEU, ROUGE, Exact Match | [Statistical Evaluators](https://www.getmaxim.ai/docs/library/evaluators/pre-built-evaluators/statistical-evaluators/overview) |
+| **Programmatic Evaluators** | Code-based assertions (JS/Python) | JSON schema validation, Regex checks | [Programmatic Evaluators](https://www.getmaxim.ai/docs/library/evaluators/pre-built-evaluators/programmatic-evaluators/overview) |
+| **Human Evaluators** | Manual review by domain experts | Expert review, RLHF annotation | [Human Annotation](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/human-annotation) |
+
+## Building Custom Evaluators
+
+While pre-built evaluators cover common use cases, **Custom Evaluators** are essential for validating domain-specific business rules and proprietary logic. Maxim allows you to build these tailored evaluators in the following ways:
+
+#### Custom AI Evaluators (LLM-as-a-Judge)
+Use this when you need to evaluate subjective criteria specific to your domain (e.g., "Is this response compliant with our brand voice?").
+
+- **Configuration:** You select the judge model (e.g., GPT-4, Claude 3.5 Sonnet) and define the **Evaluation Instructions** in the Definition Tab.
+- **Scoring Options:** Configure the output as **Binary** (Pass/Fail), **Scale** (1-5), or **Categorical** (e.g., "Compliant", "Minor Violation", "Critical Violation").
+- **Best For:** Nuances that require reasoning, such as medical advice safety or legal disclaimer checks.
+
+#### Custom Programmatic Evaluators
+Use this for deterministic, logic-based checks that code can handle better than an LLM.
+
+- **How it works:** Write a `validate` function in **Python** or **JavaScript** directly in the Maxim UI.
+- **Logic:** You can use regex to validate formats (e.g., "Must start with 'SKU-'"), check for specific keywords, or validate complex JSON structures.
+
+```python
+def validate(output, expected_output, **kwargs):
+    # Example: Fail if specific forbidden words are present
+    if "competitor_name" in output.lower():
+        return {"score": 0, "result": "Fail", "reason": "Mentioned competitor"}
+    return {"score": 1, "result": "Pass", "reason": "Clean output"}
+
+```
+
+#### API-Based Evaluators
+Connect your evaluation pipeline to external systems. If you have an existing scoring service or a specialized compliance API, you can wrap it as a Custom Evaluator to maintain a unified quality view within Maxim.
+
+## Human-in-the-Loop Evaluations
+
+For high-stakes validation or subjective quality assessment, Maxim provides a robust **Human-in-the-Loop (HITL)** pipeline. This allows subject matter experts (SMEs), domain specialists, or internal team members to review AI outputs alongside automated metrics.
+
+### Annotation Methods
+
+Maxim supports two primary workflows for collecting human feedback:
+
+| Method | Best For | How it Works |
+| --- | --- | --- |
+| **Annotate on Report** | Internal Teams | Team members with Maxim access can directly rate entries within the test run report. Multiple team members can rate the same entry, and the platform calculates the average score. |
+| **Send via Email** | External SMEs & Clients | Send evaluation requests to external reviewers (e.g., doctors, lawyers) via email. They receive a secure link to a Rater Dashboard where they can review outputs without needing a paid Maxim seat. |
+
+## Best Practices
+
+- **Curate from Production:** Use [Data Curation](https://www.getmaxim.ai/docs/library/datasets/curate-datasets) to turn failed production traces into test cases for your offline datasets.
+- **Test Tool Use:** Specifically for agents, use the [Tool Call Accuracy evaluator](https://www.getmaxim.ai/docs/library/evaluators/pre-built-evaluators/statistical-evaluators/tool-call-accuracy) to verify that your agent selects the correct tools and parameters.
+- **Use Synthetic Data:** If you lack test data, use [Synthetic Data Generation](https://www.getmaxim.ai/docs/library/datasets/synthetic-data-generation) to create datasets with edge cases and diverse user inputs.

@@ -1,0 +1,117 @@
+---
+title: "How do I Monitor Tool Calls in My AI Agents?"
+description: "Maxim's SDK allows you to monitor tool calls (external APIs, internal functions, or any callable operations in your AI application) by capturing the complete lifecycle including arguments, results, timing, and errors."
+---
+## Creating a Tool Call
+
+Use the `toolCall` method on a trace or span to create a tool call log entry. Provide the tool call ID, name, description, and arguments:
+
+**JavaScript/TypeScript:**
+
+```jsx
+const toolCall = trace.toolCall({
+  id: 'database-query-001',
+  name: 'query_user_database',
+  description: 'Queries the user database for customer information',
+  args: JSON.stringify({
+    userId: '12345',
+    fields: ['name', 'email', 'preferences']
+  }),
+});
+
+```
+
+**Python:**
+
+```python
+tool_call = trace.add_tool_call({
+    "id": "database-query-001",
+    "name": "query_user_database",
+    "description": "Queries the user database for customer information",
+    "args": json.dumps({
+        "userId": "12345",
+        "fields": ["name", "email", "preferences"]
+    }),
+})
+
+```
+
+## Recording Results and Errors
+
+After executing the tool, record the outcome using `result()` for successful executions or `error()` for failures:
+
+**JavaScript/TypeScript:**
+
+```jsx
+// Execute and record result
+try {
+  const userData = await queryDatabase(toolCallArgs);
+  toolCall.result(JSON.stringify(userData));
+} catch (error) {
+  toolCall.error({
+    message: error.message,
+    code: 'DB_CONNECTION_ERROR',
+    type: 'DatabaseError'
+  });
+}
+
+```
+
+**Python:**
+
+```python
+# Execute and record result
+try:
+    user_data = query_database(tool_call_args)
+    tool_call.result(json.dumps(user_data))
+except Exception as e:
+    tool_call.error({
+        "message": str(e),
+        "code": "DB_CONNECTION_ERROR",
+        "type": "DatabaseError"
+    })
+
+```
+
+<Tip>Both `result()` and `error()` automatically end the tool call and record the completion timestamp.</Tip>
+
+## Tool Call Properties
+
+| Property | Description |
+| --- | --- |
+| `id` | Unique identifier for the tool call (can be found in the tool call response of the LLM) |
+| `name` | Name of the tool call |
+| `description` | Description of the tool call |
+| `args` | Arguments passed to the tool call (JSON-stringified) |
+| `result` | Result returned by the tool call |
+
+## Adding Metadata and Tags
+
+You can enrich tool calls with additional context:
+
+```jsx
+toolCall.addTag('environment', 'production');
+toolCall.addTag('user_type', 'premium');
+
+toolCall.addMetadata({
+  requestId: 'req-123',
+  processingTime: 1500,
+  retryCount: 0
+});
+
+```
+
+## Viewing Tool Calls in the Dashboard
+
+All logged tool calls appear in the Maxim dashboard as part of the trace visualization. You can:
+
+- View the complete execution flow including tool call arguments and results
+- Debug failed tool calls by examining error details
+- Analyze tool call latency and performance
+- Filter traces by tool call success or failure
+
+## Automatic Tool Call Logging with Framework Integrations
+
+If you're using agent frameworks like LangChain, LlamaIndex, or OpenAI Agents SDK with Maxim's instrumentation, tool calls are automatically logged without manual instrumentation. The SDK captures tool invocations, arguments, results, and errors as part of the agent trace.
+
+<Tip>Learn more in the documentation for [tool calls](https://www.getmaxim.ai/docs/tracing/tracing-via-sdk/tool-calls) and [tracing concepts](https://www.getmaxim.ai/docs/tracing/concepts).</Tip>

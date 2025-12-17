@@ -1,0 +1,90 @@
+---
+title: "Is Maxim AI compatible with OpenTelemetry (OTel)?"
+description: "Yes, Maxim AI is fully compatible with OpenTelemetry. You can send OTLP traces directly to Maxim for AI and LLM observability, or use Maxim as a central hub to forward enriched traces to other observability platforms."
+---
+## Ingesting OTLP Traces into Maxim
+
+Maxim provides an OTLP ingestion endpoint that accepts traces in the vendor-neutral, industry-standard OpenTelemetry Protocol format. This enables deep insights into your AI systems using existing OpenTelemetry instrumentation.
+
+**Endpoint:** `https://api.getmaxim.ai/v1/otel`
+
+**Supported Protocols:**
+
+| Protocol | Content-Type |
+| --- | --- |
+| HTTP + Protobuf (binary) | application/x-protobuf or application/protobuf |
+| HTTP + JSON | application/json |
+
+**Authentication Headers:**
+
+- `x-maxim-api-key`: Your Maxim API Key
+- `x-maxim-repo-id`: Your Maxim Log Repository ID
+- `Content-Type`: application/json, application/x-protobuf, or application/protobuf
+
+**Python Example:**
+
+```python
+from opentelemetry.exporter.otlp.proto.http import trace_exporter
+OTLPSpanExporter = trace_exporter.OTLPSpanExporter
+from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+from opentelemetry.sdk import trace as trace_sdk
+from opentelemetry import trace as trace_api
+
+maxim_api_key = "your_api_key_here"
+repo_id = "your_repository_id_here"
+
+tracer_provider = trace_sdk.TracerProvider()
+span_exporter = OTLPSpanExporter(
+    endpoint="https://api.getmaxim.ai/v1/otel",
+    headers={
+        "x-maxim-api-key": f"{maxim_api_key}",
+        "x-maxim-repo-id": f"{repo_id}",
+    },
+)
+
+tracer_provider.add_span_processor(SimpleSpanProcessor(span_exporter))
+trace_api.set_tracer_provider(tracer_provider)
+
+```
+
+<Tip>Maxim supports traces that follow the OpenTelemetry Semantic Conventions for Generative AI, ensuring all AI/LLM-specific attributes are captured.</Tip>
+
+## Forwarding Traces via Data Connectors
+
+Maxim can also act as your central observability hub. Send traces once to Maxim, and forward them to your preferred observability platforms while getting AI-powered insights.
+
+**Supported Forwarding Destinations:**
+
+- New Relic
+- Snowflake
+- Any OpenTelemetry (OTLP) collector
+
+<Info>To set up forwarding, navigate to your log repository, click the top-right menu, and select "Set up data connectors."</Info>
+
+## Benefits of Using Maxim as Your Observability Hub
+
+- **Single Instrumentation**: Instrument once with Maxim, forward to multiple destinations
+- **Enriched Data**: Maxim enhances your traces with AI context before forwarding
+- **Consistent Format**: Normalized data across all your observability tools
+- **Reduced Overhead**: Lower instrumentation maintenance and network traffic
+- **Centralized Control**: Manage all your observability connections in one place
+
+## Connecting to an OTLP Collector
+
+<Steps>
+<Step>Select "Other OTel collector" in the data connectors setup dialog</Step>
+<Step>Name your connector (e.g., "Production connector")</Step>
+<Step>Choose HTTP or gRPC protocol and enter your OTLP collector URL</Step>
+<Step>Configure authentication headers as needed</Step>
+</Steps>
+
+<Info>Maxim exports traces following OpenTelemetry semantic conventions, ensuring compatibility with platforms like New Relic and other OTLP collectors. Trace forwarding happens asynchronously and doesn't impact your application performance.</Info>
+
+## Best Practices
+
+- Use binary Protobuf (`application/x-protobuf`) for optimal performance and robustness
+- Batch traces to reduce network overhead
+- Include rich attributes following GenAI semantic conventions
+- Secure your headers and avoid exposing credentials
+
+<Tip>Learn more in the documentation for [ingesting via OTLP endpoint](https://www.getmaxim.ai/docs/tracing/opentelemetry/ingesting-via-otlp) and [forwarding via data connectors](https://www.getmaxim.ai/docs/tracing/opentelemetry/forwarding-via-data-connectors).</Tip>
