@@ -18,12 +18,7 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   [Agent observability](https://www.ibm.com/think/insights/ai-agent-observability) is the practice of monitoring, tracing, and analyzing the internal states, decision-making processes, and outputs of AI agents in real-time to ensure they perform reliably and transparently in production.
   <br />
   <br />
-  **Core Components:**
-  - *Traceability & Debugging*: Mapping the step-by-step logic and tool calls an agent takes to complete a goal, allowing developers to pinpoint where a chain of thought failed.
-  - *Performance & Drift Tracking*: Monitoring model latency and output accuracy to identify "model drift" or declining quality over time.
-  - *Safety & Alignment Audit*: Detecting biases, or hallucinations to ensure the agent remains within its defined guardrails.
-  - *Continuous Monitoring*: Oversight of interactions between the agent and external APIs, databases, or software tools to identify technical bottlenecks.
-
+ 
   **Additional Resources:**
   - [Maxim's AI Agent Observability Platform](https://www.getmaxim.ai/products/agent-observability)
   - [Learn more about Observability Concepts](https://www.getmaxim.ai/docs/tracing/concepts)
@@ -35,18 +30,33 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   category="A"
  
 >
-  An [agentic workflow](https://www.ibm.com/think/topics/agentic-workflows) is an AI-driven process in which autonomous AI agents make decisions, execute tasks, and coordinate actions with minimal human intervention to achieve specific goals. These workflows employ detailed instructions and operational sequences to solve complex tasks across diverse domains.
+  An [agentic workflow](https://www.ibm.com/think/topics/agentic-workflows) is an AI-driven process in which autonomous AI agents make decisions, call external tools, execute tasks, and coordinate actions with minimal human intervention to achieve specific goals. These workflows employ detailed instructions and operational sequences to solve complex tasks across diverse domains.
   <br />
   <br />
-  **Core components:**
-  - *AI Agents*: Systems that autonomously perform tasks by designing workflows and using available tools.
-  - *Large Language Models (LLMs)*: Crucial for processing and generating natural language.
-  - *Tool Use*: External resources like datasets, web searches, and APIs that extend an LLM's capabilities beyond its training data.
-  - *Memory Systems*: Store context across interactions short-term for conversation history, long-term for accumulated knowledge.
-  - *Reasoning Capabilities*: Enable iterative problem-solving through planning and reflection.
-
+ 
   **Additional Resources:**
   - [Evaluating Agentic Workflows: The Essential Metrics That Matter](https://www.getmaxim.ai/blog/evaluating-agentic-workflows)
+</GlossaryCard>
+
+<GlossaryCard
+  term="AI Gateway"
+  category="A"
+  link={{ href: "https://www.getmaxim.ai/bifrost", text: "Learn more about Bifrost- the fastest LLM Gateway"}}
+>
+  An [AI Gateway](https://konghq.com/blog/enterprise/what-is-an-ai-gateway) is a specialized middleware layer designed explicitly for managing and securing interactions with Large Language Models and other AI-powered services. It sits between applications and AI models (like ChatGPT, Gemini, Claude), handling essential functions such as request routing, authentication, authorization, rate limiting, and traffic monitoring. 
+  <br />
+  <br />
+  **Key Capabilities:**
+  - *Unified API Abstraction*: Provides a single, consistent interface to access multiple AI providers, preventing vendor lock-in and simplifying integration.
+  - *Security and Compliance*: Enforces managed identities and PII (Personally Identifiable Information) redaction to prevent unauthorized data exposure.
+  - *Traffic & Policy Management*: Controls costs and performance through rate limiting, smart request routing, and automated model fallbacks.
+  - *Observability & Cost Governance*: Centralizes the tracking of token usage, quotas, and error rates to provide clear oversight of AI spend.
+  - *Model Orchestration*: Centralizes management of multiple AI models including access controls, monitoring, and deployment.
+ 
+  **Additional Resources:**
+  - [Bifrost- the fastest LLM Gateway](https://github.com/maximhq/bifrost)
+  - [Bifrost vs LitLLM](https://www.getmaxim.ai/blog/bifrost-a-drop-in-llm-proxy-40x-faster-than-litellm/)
+ 
 </GlossaryCard>
 
 <GlossaryCard
@@ -69,7 +79,7 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   category="C"
   link={{ href: "https://www.redhat.com/en/topics/devops/what-is-ci-cd", text: "Learn more about how Maxim helps to automate evaluations by integrating them into your CI/CD pipelines" }}
 >
-  [CI/CD](https://www.redhat.com/en/topics/devops/what-is-ci-cd) is the combined practices of continuous integration (CI) and continuous delivery (CD). It uses automation to bridge the gaps between development and operations, allowing teams to release high-quality code faster and more reliably.
+  [CI/CD](https://www.redhat.com/en/topics/devops/what-is-ci-cd) is the combined practices of continuous integration (CI) and continuous delivery (CD). It uses automation to bridge the gaps between development and deployments, allowing teams to release high-quality code faster and more reliably.
   <br />
   <br />
   **Additional Resources:**
@@ -99,11 +109,10 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   - *Traces*: The end-to-end record of a single request’s journey through the system.
   - *Spans*: The fundamental unit of a trace representing a specific operation (e.g., an API call, a database query, or an LLM generation).
   - *Event*: Events mark significant points within a span or a trace recording instantaneous occurrences that provide additional context for understanding system behavior.
-  - *Context propagation*: Ensures trace IDs and metadata flow consistently across services via OpenTelemetry.
 
   **Additional Resources:**
   - [Learn more about Distributed Tracing](https://www.getmaxim.ai/docs/tracing/concepts#trace)
-  - [Badics of AI Observability](https://www.getmaxim.ai/blog/basics-of-ai-observability-sessions-traces-and-spans/)
+  - [Basics of AI Observability](https://www.getmaxim.ai/blog/basics-of-ai-observability-sessions-traces-and-spans/)
 
 </GlossaryCard>
 
@@ -112,7 +121,7 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   category="D"
   link={{ href: "https://www.getmaxim.ai/articles/a-comprehensive-guide-to-preventing-ai-agent-drift-over-time/", text: "Book a demo to see how Maxim helps in drift detection" }}
 >
-  [Model drift](https://www.ibm.com/think/topics/model-drift) (also known as model decay) refers to the degradation of machine learning performance due to changes in data or the relationships between input and output variables. This shift can negatively impact model reliability, resulting in faulty decision-making and inaccurate predictions.
+  In LLMs, [drift](https://nexla.com/ai-infrastructure/data-drift/) refers to changes in the text distribution compared to the model's initial training data, causing the training data to become less representative of real-world usage over time. This phenomenon results in degraded model performance, producing less coherent, accurate, or contextually relevant outputs.
   <br />
   <br />
   **Mitigation:**
@@ -142,37 +151,17 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
 
 ## G
 
-<GlossaryCard
-  term="AI Gateway"
-  category="G"
-  link={{ href: "https://www.getmaxim.ai/bifrost", text: "Learn more about Bifrost- the fastest LLM Gateway"}}
->
-  An [AI Gateway](https://konghq.com/blog/enterprise/what-is-an-ai-gateway) sits between applications and AI models (like ChatGPT, Gemini, Claude), handling essential functions such as request routing, authentication, authorization, rate limiting, and traffic monitoring. 
-  <br />
-  <br />
-  **Key Capabilities:**
-  - *Unified API Abstraction*: Provides a single, consistent interface to access multiple AI providers, preventing vendor lock-in and simplifying integration.
-  - *Security and Compliance*: Enforces managed identities and PII (Personally Identifiable Information) redaction to prevent unauthorized data exposure.
-  - *Traffic & Policy Management*: Controls costs and performance through rate limiting, smart request routing, and automated model fallbacks.
-  - *Observability & Cost Governance*: Centralizes the tracking of token usage, quotas, and error rates to provide clear oversight of AI spend.
-  - *Model Orchestration*: Centralizes management of multiple AI models including access controls, monitoring, and deployment.
- 
-  **Additional Resources:**
-  - [Bifrost- the fastest LLM Gateway](https://github.com/maximhq/bifrost)
-  - [Bifrost vs LitLLM](https://www.getmaxim.ai/blog/bifrost-a-drop-in-llm-proxy-40x-faster-than-litellm/)
- 
-</GlossaryCard>
 
 <GlossaryCard 
   term="Guardrails"
   category="G"
   link={{ href: "https://www.getmaxim.ai/demo", text: "Schedule a demo to lean more abput Bifrost" }}
 >
-  [Guardrails](https://www.ibm.com/think/topics/ai-guardrails) are safety mechanisms designed to ensure artificial intelligence applications, particularly large language models (LLMs), deliver trustworthy outputs while protecting against vulnerabilities such as harmful content or sensitive data exposure.
+  [Guardrails](https://www.ibm.com/think/topics/ai-guardrails) are safety mechanisms designed to ensure artificial intelligence applications, particularly large language models (LLMs), deliver trustworthy outputs while protecting against vulnerabilities such as harmful content, sensitive data exposure, and malicious prompt engineering practices like jailbreaking or injection attacks.
   <br />
   <br />
-  **Core Components:**
-  - *Appropriateness Guardrails*: Check if the content generated by AI is toxic, harmful, biased, or based on stereotypes and filter out any such inappropriate content before it reaches customers
+  **Types of Guardrails:**
+  - *Appropriateness Guardrails*: Check if the content generated by AI agent is toxic, harmful, biased, or based on stereotypes and filter out any such inappropriate content before it reaches customers
   - *Hallucination Guardrails*: Ensure that AI-generated content doesn't contain information that is factually wrong or misleading
   - *Regulatory Compliance Guardrails*: Validate that generated content meets regulatory requirements, whether those requirements are general or specific to the industry or use case.
   - *Security Guardrails*: Ensure the app complies with laws and regulations, handling personal data and protecting individuals' rights.
@@ -190,27 +179,19 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   category="H"
   link={{ href: "https://www.getmaxim.ai", text: "Learn more Abot Maxim AI" }}
 >
-  [AI hallucinations](https://www.ibm.com/think/topics/ai-hallucinations) occur when a large language model (LLM) perceives patterns or objects that are nonexistent, creating nonsensical or inaccurate outputs. Large language models are prone to hallucination, generating plausible yet nonfactual content, which raises significant concerns over the reliability of LLMs in real-world information retrieval systems.
+  [AI hallucinations](https://www.ibm.com/think/topics/ai-hallucinations) occur when a large language model (LLM) perceives patterns or objects that are nonexistent, creating nonsensical or inaccurate outputs. Large language models are prone to hallucinations, generating plausible yet nonfactual content, which raises significant concerns over the reliability of LLMs in real-world.
   <br />
   <br />
   **Detection and mitigation:**
   - *Automated Evaluations*: Utilizing scalable frameworks such as "LLM-as-a-Judge," statistical metrics, and reference-based scoring to identify non-factual content.
   - *Human-in-the-loop evaluations*: Leveraging domain experts to validate outputs for contextual relevance and subjective accuracy that automated tools might miss.
-  - *Real-Time Monitoring and Observability*: Implementing continuous monitoring of production logs and agent traces. Key practices include distributed tracing and online evaluations to trigger alerts when hallucinations occur post-deployment.
+  - *Real-Time Monitoring and Observability*: Implementing continuous monitoring of production logs and agent traces. 
 
   **Additional Resources:**
   - [See how you can build robust Evaluation Pipelines with Maxim AI](https://www.getmaxim.ai/docs/online-evals/via-ui/set-up-auto-evaluation-on-logs)
   - [LLM hallucination detection with Maxim AI](https://www.getmaxim.ai/blog/llm-hallucination-detection/)
 </GlossaryCard>
 
-
-
-<GlossaryCard
-  term="Hyperparameter"
-  category="H"
->
-  In machine learning, a [hyperparameter](https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)) is a parameter that can be set in order to define any configurable part of a model's learning process. Hyperparameters can be classified as either model hyperparameters or algorithm hyperparameters.
-</GlossaryCard>
 
 
 ## L 
@@ -231,7 +212,7 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   term="MCP server"
   category="M"
 >
-  The [MCP server](https://en.wikipedia.org/wiki/Model_Context_Protocol) is the external service that provides context, data, or capabilities to the LLM. using a standardized protocol. It acts as a bridge between the AI and external systems such as databases, local files, or web APIs translating complex data into a format the LLM can immediately process and use.
+  [MCP server](https://en.wikipedia.org/wiki/Model_Context_Protocol) is the external service that provides context, data, or capabilities to the LLM using a standardized protocol. It acts as a bridge between the AI and external systems such as databases, local files, or web APIs translating complex data into a format the LLM can immediately process and use.
 </GlossaryCard>
 
 
@@ -338,12 +319,12 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   A [semantic cache](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/semantic-cache) provides a way for you to use prior user prompts and LLM completions to address similar user prompts using vector similarity search. A semantic cache can reduce latency and save costs in your GenAI applications as making calls to LLMs is often the most costly and highest latency service in such applications.
 </GlossaryCard>
 
-<GlossaryCard
+{/* <GlossaryCard
   term="Statistical confidence"
   category="S"
 >
   It is a metric used to quantify the certainty of a statistical estimate or an AI model's prediction. It represents the probability that a specific result is accurate and not due to random chance. In AI evaluation, it helps teams determine if a model’s performance (e.g., an accuracy score) is a true reflection of its capability or just a result of a specific data sample.
-</GlossaryCard>
+</GlossaryCard> */}
 
 <GlossaryCard
   term="Stress-testing"
@@ -358,7 +339,7 @@ import { GlossaryImageProcessor } from '/snippets/GlossaryImageProcessor.jsx'
   term="Throughput"
   category="T"
 >
-  [Throughput](https://en.wikipedia.org/wiki/Network_throughput) refers to the rate of message delivery over a communication channel in a communication network, such as ethernet or packet radio. Throughput is usually measured in bits per second (bit/s, sometimes abbreviated bps), and sometimes in packets per second (p/s or pps) or data packets per time slot.
+  [Throughput](https://en.wikipedia.org/wiki/Network_throughput) refers to the rate of message delivery over a communication channel in a communication network, such as TCP/IP. Throughput is usually measured in bits per second (bit/s, sometimes abbreviated bps), and sometimes in packets per second (p/s or pps) or data packets per time slot.
 </GlossaryCard>
 
 ## V 
