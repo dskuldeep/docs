@@ -1,0 +1,57 @@
+---
+title: "How do I Test, Evaluate, and Optimize Prompts?"
+description: "Maxim lets you test prompts interactively, run automated evaluations against datasets, compare versions side by side, measure tool call accuracy, evaluate RAG retrieval quality, and automatically optimize prompts based on evaluation results."
+---
+
+## Quick Testing in the Playground
+
+Start by running your prompt interactively in the [Prompt Playground](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/prompt-playground) to validate basic behavior. You can configure different models, adjust parameters like temperature and max tokens, and test various inputs. For multi-turn conversations, add messages and mimic assistant responses to debug complex interactions. Save your experimental states as [sessions](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/prompt-sessions) so you can return to them later or share them with team members.
+
+## Running Evaluations Against Datasets
+
+For systematic quality measurement, [run your prompt against a dataset](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/quickstart) of test cases with evaluators attached:
+
+- **Choose a dataset** containing your test inputs and expected outputs
+- **Select evaluators** from the Evaluator Store to measure dimensions like accuracy, toxicity, relevance, or custom criteria
+- **Review comprehensive reports** showing overall quality scores, which inputs performed best or worst, side-by-side comparisons of expected vs. actual outputs, and detailed evaluator feedback on specific responses
+
+## Comparing Prompt Versions
+
+When iterating on prompts, use [comparison evaluations](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/prompt-evals) to make data-driven decisions:
+
+- Compare different prompt versions or entirely different prompts against the same dataset
+- Analyze scores across all test cases for your chosen evaluation metrics
+- Review side-by-side output differences along with latency, cost, and token usage charts
+- Deep-dive into any entry to inspect messages, evaluation details, and logs
+
+## Evaluating Tool Call Accuracy
+
+For agentic workflows, Maxim lets you measure whether your prompt [selects the correct tools](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/tool-calls):
+
+- Attach tools (API, code, or schema) to your prompt in the Playground
+- Create a dataset with inputs and expected tool calls
+- Use the tool call accuracy evaluator to score whether the model chose the right tools with correct arguments
+- Review detailed message logs showing the complete tool selection and execution flow
+
+## Testing RAG and Retrieval Quality
+
+For prompts that rely on retrieved context, connect your RAG pipeline via a Context Source and [evaluate retrieval quality](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/retrieval):
+
+- Link your retrieval API endpoint as a dynamic variable in your prompt
+- Run evaluations with context-specific evaluators like context recall, context precision, and context relevance
+- Examine retrieved chunks for each test case and review evaluator reasoning to debug retrieval issues
+
+## MCP Integration for Tool-Assisted Workflows
+
+If you're using Model Context Protocol, Maxim supports both agentic and non-agentic modes for [testing prompts with MCP tools](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/mcp). Connect your MCP client, attach the tools to your prompt, and evaluate whether the model correctly leverages them across different scenarios.
+
+## AI-Powered Prompt Optimization
+
+After running evaluations, use Maxim's [prompt optimization](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/prompt-optimization) to automatically improve your prompts:
+
+- Select which evaluators to prioritize and how many optimization iterations to run
+- The system analyzes your test results, generates improved prompt versions, and tests them against your dataset
+- Review side-by-side comparisons of original and optimized prompts with detailed reasoning for each change
+- Accept the optimized version to create a new prompt version linked to your evaluation runs
+
+This combination of interactive testing, automated evaluation, and AI-assisted optimization helps you systematically improve prompt quality before deploying to production.

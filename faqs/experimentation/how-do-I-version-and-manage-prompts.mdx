@@ -1,0 +1,36 @@
+---
+title: "How do I Version and Manage Prompts?"
+description: "Maxim's Prompt Playground provides a complete environment for creating, versioning, comparing, and deploying prompts, all without making any changes to the existing code base."
+---
+
+## Creating and Iterating on Prompts
+
+Start by creating a prompt in the Playground, where you can:
+
+- Select from open-source, closed, or custom models
+- Configure parameters like temperature, max tokens, top-P, and response format
+- Add system and user messages to define your prompt structure
+- Use variables with `{{ }}` syntax for dynamic content injection
+- Attach tools for function-calling scenarios
+
+## Publishing Versions
+
+When you're ready to lock in a prompt state:
+
+1. Look for the "unpublished changes" badge in the header indicating unsaved modifications
+2. Click "Publish Version" to create a new version
+3. Add an optional description so team members understand what changed and why
+4. Access version history anytime via the dropdown, each version shows the publisher and timestamp
+
+## Comparing Versions
+
+Maxim offers two ways to compare prompts:
+
+- **Diff View:** Select any two versions and see a side-by-side diff highlighting configuration changes, message content updates, and parameter modifications. You can swap version order, navigate between changes, and share comparison URLs with your team.
+- **Output Comparison:** Compare up to five prompts (or versions) side by side in the Playground. Configure each independently with different models or parameters, run them against the same input, and compare actual outputs, latency, cost, and token counts to identify the best-performing version.
+
+## Organizing Your Prompts
+
+Use folders and tags to keep prompts organized as your library grows. Save experimental states as sessions, comparison sessions are marked with a badge for easy retrieval later.
+
+<Tip>Once you've identified the optimal version, you can deploy it directly from the UI or run bulk evaluations against test datasets before pushing to production.</Tip>

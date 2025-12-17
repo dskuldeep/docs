@@ -1,0 +1,52 @@
+---
+title: "How does Agent Simulation Help Evaluate AI Agents?"
+description: "Maxim AI's Agent Simulation allows you to automate the testing of conversational AI by generating realistic, multi-turn interactions. Instead of relying solely on static datasets or manual testing, simulations create dynamic dialogues between your agent and a simulated user to stress-test behavior, context retention, and robustness."
+---
+
+## Why Would I Use Simulations Instead of Just Manual Testing?
+
+Manual testing is time-consuming and often fails to uncover edge cases. Simulations automate this process, allowing you to:
+
+- **Test Context Retention:** Verify how your AI maintains context across multiple exchanges.
+- **Evaluate Emotional Intelligence:** See how your agent responds to different user emotions (e.g., frustrated vs. happy) and behaviors.
+- **Verify Business Logic:** Ensure the agent adheres to policies and uses business context correctly.
+- **Identify Dead-Ends:** Spot conversation flows where the agent gets stuck or fails to resolve the user's issue.
+
+## What Is the Difference Between Agent Simulation and Prompt Simulation?
+
+Maxim offers two distinct simulation modes depending on what you are testing:
+
+| Simulation Type | Purpose | Best For |
+| --- | --- | --- |
+| **Agent Simulation** | Tests complete agent workflows with AI-generated user interactions. | Multi-agent systems, complex workflows, and full application logic. |
+| **Prompt Simulation** | Tests individual prompts or prompt chains with AI-generated inputs. | Optimizing prompt performance and logic before integration. |
+
+## How Do I Create a Realistic Test Scenario?
+
+To ensure your simulation mirrors real-world usage, you must define three key components:
+
+<Steps>
+<Step title="The Scenario">
+Be specific about the situation you want to test. Vague scenarios lead to generic tests.
+<Info>***Example*** <br />
+"Customer requesting a refund for a defective laptop" or "New user needs help configuring account security settings."</Info>
+</Step>
+<Step title="The Agent Description">
+Provide a detailed description of your agent's purpose, capabilities, and tone. This helps the simulation generator understand what the agent *should* be doing.
+<Info>***Example*** <br />
+"Financial Advisor Agent: Helps with investment decisions, analyzes portfolios, and maintains a professional tone. Always recommends consulting a licensed advisor for major decisions."</Info>
+</Step>
+<Step title="The User Persona">
+Define the simulated user's emotional state and expertise level to test how your agent adapts.
+<Info>***Example*** <br />
+"Frustrated customer," "Non-technical user," or "Expert user with specific terminology."</Info>
+</Step>
+</Steps>
+
+## Can I Control the Length and Complexity of the Simulation?
+
+Yes. In the **Advanced settings**, you can configure constraints to tailor the simulation to your needs:
+
+- **Maximum Number of Turns:** Set a limit for the conversation length. If unset, the simulation runs until the conversation naturally concludes.
+- **Reference Tools:** Attach specific [Prompt Tools](https://www.getmaxim.ai/docs/library/prompt-tools) you want to test within the simulation (e.g., an API for checking order status).
+- **Reference Context:** Add [Context Sources](https://www.getmaxim.ai/docs/library/context-sources) (documents or knowledge bases) to guide the conversation.

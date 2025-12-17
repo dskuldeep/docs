@@ -1,0 +1,115 @@
+---
+title: "How can I Monitor Complex AI Agent Workflows in Production?"
+description: "Maxim provides SDK integrations for popular agent frameworks that automatically trace multi-agent workflows, tool calls, LLM invocations, errors, and metrics like token usage and latency, all visualized in the Maxim dashboard for analysis and debugging."
+---
+
+## Instrumenting Your Agent Framework
+
+Maxim offers one-line instrumentation for agent frameworks including LlamaIndex, Google ADK, LangChain, LangGraph, OpenAI Agents SDK, CrewAI, Pydantic AI, and Smolagents. Once instrumented, all agent execution steps and interactions are automatically captured.
+
+## LlamaIndex Integration
+
+```python
+from maxim import Maxim, Config
+from maxim.logger import LoggerConfig
+from maxim.logger.llamaindex import instrument_llamaindex
+
+# Initialize Maxim logger
+maxim = Maxim(Config(api_key=os.getenv("MAXIM_API_KEY")))
+logger = maxim.logger(LoggerConfig(id=os.getenv("MAXIM_LOG_REPO_ID")))
+
+# Instrument LlamaIndex with Maxim observability
+instrument_llamaindex(logger, debug=True)
+
+```
+
+<Info>This single line automatically instruments `AgentWorkflow.run()` for multi-agent workflow execution, `FunctionAgent.run()` for function-based agent interactions, and `ReActAgent.run()` for ReAct reasoning agent calls.</Info>
+
+## Google ADK Integration
+
+```python
+from maxim import Maxim
+from maxim.logger.google_adk import instrument_google_adk
+
+maxim = Maxim()
+maxim_logger = maxim.logger()
+
+# Apply instrumentation patches to Google ADK
+instrument_google_adk(maxim_logger, debug=True)
+
+```
+
+## LangChain Integration
+
+```python
+from maxim import Maxim, Config, LoggerConfig
+from maxim.logger.langchain import MaximLangchainTracer
+
+logger = Maxim(Config()).logger(LoggerConfig(id=MAXIM_LOG_REPO_ID))
+langchain_tracer = MaximLangchainTracer(logger)
+
+# Pass tracer to LangChain calls
+response = llm.invoke(messages, config={"callbacks": [langchain_tracer]})
+
+```
+
+## What Gets Traced Automatically
+
+With Maxim instrumentation enabled, you automatically capture:
+
+- **Agent execution traces**: All tool executions with inputs and outputs, step-by-step decision making process, and performance metrics
+- **Multi-agent coordination**: Agent handoffs, communication patterns, and workflow orchestration
+- **LLM interactions**: Complete prompts and responses, model parameters, token usage, and error handling including failed requests and retry attempts
+- **Tool chain execution**: Sequential and parallel tool usage across complex workflows
+- **Multi-modal processing**: Text, image, and mixed content handling
+
+## Key Metrics Collected
+
+The integration automatically collects:
+
+- Agent execution time and latency
+- Token usage and costs for each agent or workflow
+- Error rates and exception details
+- Agent interaction patterns and handoff sequences
+
+## Viewing Traces in the Dashboard
+
+All agent interactions, tool calls, and workflow executions are automatically traced and available in the Maxim dashboard. You can:
+
+- Monitor agent performance and success rates
+- Debug failed tool calls and agent reasoning
+- Analyze multi-agent coordination patterns
+- Track token usage and costs across workflows
+- Set up alerts for agent failures or performance issues
+
+## Advanced: Custom Callbacks for Additional Control
+
+For more granular control, you can use callback functions to hook into different stages of agent execution. For example, with Google ADK:
+
+```python
+async def after_generation(callback_context, llm_response, generation,
+                          generation_result, usage_info, content, tool_calls):
+    generation.add_metric("latency_seconds", latency)
+    generation.add_tag("has_tool_calls", "yes" if tool_calls else "no")
+
+instrument_google_adk(
+    maxim_logger,
+    debug=True,
+    after_generation_callback=after_generation,
+)
+
+```
+
+<Info>Available callbacks include `before_generation_callback`, `after_generation_callback`, `before_trace_callback`, `after_trace_callback`, `before_span_callback`, and `after_span_callback`.</Info>
+
+## Setting Up Alerts for Agent Failures
+
+Once your agents are instrumented, you can configure alerts to monitor performance:
+
+<Steps>
+<Step>Navigate to your log repository and select the **Alerts** tab</Step>
+<Step>Create alerts for latency thresholds, error rates, or cost limits</Step>
+<Step>Connect notification channels (Slack or PagerDuty) to receive real-time alerts when agents fail or performance degrades</Step>
+</Steps>
+
+<Tip>Learn more in the documentation for [LlamaIndex integration](https://www.getmaxim.ai/docs/sdk/python/integrations/llamaindex/llamaindex), [Google ADK integration](https://www.getmaxim.ai/docs/sdk/python/integrations/google-adk/google-adk), and [LangChain integration](https://www.getmaxim.ai/docs/sdk/python/integrations/langchain/langchain).</Tip>

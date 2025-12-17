@@ -1,0 +1,53 @@
+---
+title: "How can I Evaluate Voice AI Agents?"
+description: "Maxim AI’s Voice Simulation extends evaluation capabilities beyond text-based chats to fully interactive voice conversations. It allows you to test how your AI agent handles real-time speech, accents, interruptions, and latency by simulating a phone call from a user persona."
+---
+## What is Voice Simulation?
+
+Voice Simulation automates the testing of telephony bots and voice assistants. Instead of manually calling your agent repeatedly, Maxim initiates calls using a configured "Simulation Agent" (the user). This agent speaks, listens, and responds based on a defined persona and scenario, allowing you to test:
+
+- **Speech Patterns:** How the agent handles different accents or speaking styles.
+- **Latency:** The delay between the user finishing a sentence and the agent responding.
+- **Turn-Taking:** Whether the agent interrupts appropriately or waits for the user to finish.
+
+## How do I Set Up a Voice Simulation?
+
+Setting up a voice test involves three main steps: connecting your telephony provider, defining the agent, and configuring the scenario.
+<Steps>
+<Step title="Connect a Voice Provider">
+
+<Check>First, you must bridge Maxim with a telephony service to enable calling capabilities.</Check>
+
+- Navigate to **Settings -> Voice Providers**.
+- Add a provider (e.g., **Twilio**, **VAPI**).
+- Enter the required credentials, such as the **Account SID** and **Auth Key**, to establish a secure connection.
+</Step>
+<Step title="Configure the Voice Agent">
+
+<Check>Next, tell Maxim where to call.</Check>
+
+- Go to **Agents -> Voice Agents**.
+- Create a new agent profile with a name and description (this context helps the simulation agent understand who it is talking to).
+- Add the **Phone Number** and **Country Code** of your voice agent.
+</Step>
+<Step title="Define Persona and Scenario">
+
+<Check>Finally, configure the test parameters.</Check>
+
+- **Scenario:** Define the conversation context and goals (e.g., "User wants to reschedule a dental appointment").
+- **Persona:** Set the voice characteristics and style of the caller.
+- **Initiator Settings:** Configure who speaks first. By default, the simulation agent waits for your voice agent to greet. If you set the simulation agent to speak first, ensure your voice agent is configured to wait before responding.
+</Step>
+</Steps>
+## What Metrics can I Evaluate for Voice Agents?
+
+Maxim provides multiple pre-built statistical metrics tailored for audio interactions, providing insights that text transcripts alone cannot offer:
+
+| Metric | Description |
+| --- | --- |
+| **Average Response Latency** | The time taken by your agent to respond after the user stops speaking. Crucial for measuring "lag." |
+| **Speech Rate** | Measures the speed of speech, ensuring the agent isn't speaking too fast or too slow for the user to understand. |
+| **Talk Ratio** | The balance of speaking time between the user and the agent (e.g., is the agent lecturing the user?). |
+| **Average Pitch** | Analyzes the tonal quality of the conversation. |
+
+<Tip>During the run, you can view **real-time transcripts** of the dialogue and **playback or download** the audio recordings for detailed analysis.</Tip>

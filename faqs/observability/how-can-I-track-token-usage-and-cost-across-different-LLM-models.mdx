@@ -1,0 +1,148 @@
+---
+title: "How can I Track Token Usage and Cost Across Different LLM Models?"
+description: "Maxim provides multiple ways to track token usage and calculate costs across your LLM models, from automatic tracking through SDK integrations to custom metric logging and configurable pricing structures."
+---
+
+## Automatic Token and Cost Tracking
+
+When you log LLM generations using the Maxim SDK, token usage and costs are captured automatically from the model response. When recording an LLM response, include the `usage` object with `prompt_tokens`, `completion_tokens`, and `total_tokens`:
+
+```jsx
+generation.result({
+    id: "chatcmpl-123",
+    object: "chat.completion",
+    created: Date.now(),
+    model: "gpt-4o",
+    choices: [{
+        index: 0,
+        message: {
+            role: "assistant",
+            content: "Response content here"
+        },
+        finish_reason: "stop"
+    }],
+    usage: {
+        prompt_tokens: 100,
+        completion_tokens: 50,
+        total_tokens: 150
+    }
+});
+```
+
+For framework integrations like LangChain, LlamaIndex, or Google ADK, token usage is tracked automatically when you use the Maxim tracer. For example, with LangChain:
+
+```jsx
+from maxim.logger.langchain import MaximLangchainTracer
+
+langchain_tracer = MaximLangchainTracer(logger)
+response = llm.invoke(messages, config={"callbacks": [langchain_tracer]})
+```
+
+This automatically captures latency, token usage, and costs for all LLM calls without additional instrumentation.
+
+## Custom Metric Tracking via SDK
+
+For more granular control, you can log token usage and cost metrics explicitly at different levels using the `addMetric` method.
+
+Track metrics at the **trace level**:
+
+```jsx
+trace.addMetric('cost_usd', 0.05);
+trace.addMetric('tokens_total', 1420);
+```
+
+Track metrics at the **generation level**:
+
+```jsx
+generation.addMetric('tokens_in', 312);
+generation.addMetric('tokens_out', 87);
+generation.addMetric('ttft_ms', 180.5);  // Time to first token
+generation.addMetric('tps', 15.8);        // Tokens per second
+```
+
+Track metrics at the **session level** for aggregates across multiple interactions:
+
+```jsx
+session.addMetric('traces_count', 4);
+session.addMetric('user_messages_count', 2);
+```
+
+## Configuring Custom Token Pricing
+
+To ensure cost calculations reflect your actual expenses (such as negotiated enterprise rates), configure custom pricing structures:
+<Steps>
+<Step >
+Navigate to **Settings > Models > Pricing**
+</Step>
+<Step>
+Enter a model name pattern (string or regex) that matches your model names
+</Step>
+<Step>
+Input your token usage cost per 1,000 tokens for both input and output tokens
+</Step>
+</Steps>
+<Tip>Custom pricing supports **OpenAI, Microsoft Azure, Groq, HuggingFace, Together AI, Google Cloud, and Amazon Bedrock models**</Tip>
+
+## Applying Pricing to Model Configs
+<Steps>
+
+<Step>
+Go to **Settings > Models > Model Configs**
+</Step>
+
+<Step>
+Select a model config to edit
+</Step>
+
+<Step>
+Locate the **Pricing structure** section
+</Step>
+
+<Step>
+Choose your pricing structure from the dropdown
+</Step>
+
+</Steps>
+
+## Applying Pricing to Log Repositories
+<Steps>
+<Step>
+Open **Logs** from the sidebar
+</Step>
+<Step>
+Select the log repository you want to configure
+</Step>
+<Step>
+Find the **Pricing structure** section
+</Step>
+<Step>
+Choose your pricing structure from the dropdown
+</Step>
+</Steps>
+<Tip>When no custom rates exist, standard pricing applies by default.</Tip>
+
+## Setting Up Cost and Token Alerts
+
+Monitor token usage and costs in real-time by configuring alerts:
+
+<Steps>
+<Step>Navigate to your log repository and select the **Alerts** tab</Step>
+<Step>Click **Create alert** and select **Log metrics** as the alert type</Step>
+<Step>
+Configure thresholds for:
+    - **Token Usage**: Alert when consumption exceeds limits (e.g., trigger when hourly usage exceeds 1 million tokens)
+    - **Cost**: Alert when expenses exceed budgets (e.g., trigger when daily costs exceed $100)
+</Step>
+<Step>Select notification channels (Slack or PagerDuty)</Step>
+<Step>Click **Create alert**</Step>
+</Steps>
+## Dashboard Visibility
+
+Once logging is set up, you can view aggregated token and cost data in your log repository dashboard, including:
+
+- Total usage over time
+- Cost per trace
+- Token counts for each log entry (visible in the logs table)
+- Latency and performance metrics
+
+<Tip>Learn more in the documentation for [custom metrics](https://www.getmaxim.ai/docs/tracing/tracing-via-sdk/custom-metrics), [custom pricing](https://www.getmaxim.ai/docs/settings/custom-pricing), [generations logging](https://www.getmaxim.ai/docs/tracing/tracing-via-sdk/generations), and [setting up alerts](https://www.getmaxim.ai/docs/online-evals/set-up-alerts-and-notifications).</Tip>
