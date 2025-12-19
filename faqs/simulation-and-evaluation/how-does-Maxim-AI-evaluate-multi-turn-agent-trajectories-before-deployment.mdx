@@ -1,0 +1,9 @@
+---
+title: "How does Maxim AI evaluate multi-turn agent trajectories before deployment?"
+description: "Maxim AI evaluates multi-turn agent trajectories offline using partial traces and AI-powered simulations. Test conversations, identify failures, and validate performance before deployment."
+---
+You can run offline evaluations on multi-turn agent trajectories in two common ways:
+- **With traces**: The first one is by bringing in partial traces, and evaluating the next step. For instance, if you want to evaluate the nth step, you bring in the previous n-1 traces. In other words, you can replay n-1 steps of the conversation and then evaluate the next one. 
+- **AI-powered simulations**: Generate realistic user interactions at scale to evaluate your agents across diverse real-world scenarios and user personas. Simulations help you identify behavioral trends, spot potential failure points, and validate agent performance without requiring live user traffic.
+
+(See: Learn more about simulation [here](https://www.getmaxim.ai/docs/simulations/text-simulation/overview).)

@@ -20,12 +20,16 @@
             "group": "FAQs",
             "pages": [
               {
-                "group": "Experimentation",
+                "group": "Prompt Engineering",
                 "pages": [
-                  "faqs/experimentation/what-is-prompt-engineering",
-                  "faqs/experimentation/how-does-maxim-streamline-the-prompt-engineering-lifecycle",
-                  "faqs/experimentation/how-do-I-version-and-manage-prompts",
-                  "faqs/experimentation/how-to-test-evaluate-and-optimize-prompts"
+                  "faqs/prompt-engineering/what-is-prompt-engineering",
+                  "faqs/prompt-engineering/how-does-maxim-streamline-the-prompt-engineering-lifecycle",
+                  "faqs/prompt-engineering/how-do-I-version-and-manage-prompts",
+                  "faqs/prompt-engineering/how-to-test-evaluate-and-optimize-prompts",
+                  "faqs/prompt-engineering/how-can-I-evaluate-the-performance-of-the-prompts-with-Maxim-AI",
+                  "faqs/prompt-engineering/Can-I-build-no-code-agents-for-experimentation-with-Maxim-AI",
+                  "faqs/prompt-engineering/does-Maxim-support-multimodal-inputs-for-prompt-evaluation",
+                  "faqs/prompt-engineering/can-I-reuse-common-instructions-across-multiple-prompts"
                 ]
               },
               {
@@ -35,7 +39,13 @@
                   "faqs/simulation-and-evaluation/how-do-I-create-a-custom-evaluator",
                   "faqs/simulation-and-evaluation/how-does-agent-simulation-help-evaluate-ai-agents",
                   "faqs/simulation-and-evaluation/how-can-I-evaluate-voice-ai-agents",
-                  "faqs/simulation-and-evaluation/how-can-I-evaluate-local-ai-agents"
+                  "faqs/simulation-and-evaluation/how-can-I-evaluate-local-ai-agents",
+                  "faqs/simulation-and-evaluation/what-is-AI-agent-evaluation",
+                  "faqs/simulation-and-evaluation/how-does-Maxim-AI-evaluate-multi-turn-agent-trajectories-before-deployment",
+                  "faqs/simulation-and-evaluation/what-type-of-evaluators-does-Maxim-provide",
+                  "faqs/simulation-and-evaluation/how-can-I-integrate-evaluations-into-myci-cd-pipeline",
+                  "faqs/simulation-and-evaluation/can-I-curate-and-evolve-datasets-for-agent-evals-in-Maxim-AI",
+                  "faqs/simulation-and-evaluation/does-Maxim-support-human-in-loop-evaluation-for-agents"
                 ]
               },
               {
@@ -44,7 +54,10 @@
                   "faqs/observability/how-can-I-track-token-usage-and-cost-across-different-LLM-models",
                   "faqs/observability/how-can-I-monitor-complex-ai-agent-workflows-in-production",
                   "faqs/observability/how-do-I-monitor-tool-calls-in-my-AI-agents",
-                  "faqs/observability/is-maxim-ai-otel-compatible"
+                  "faqs/observability/is-maxim-ai-otel-compatible",
+                  "faqs/observability/what-is-agent-observability-and-why-do-iI-need-it",
+                  "faqs/observability/can-I-get-alerted-for-any-regressions-in-cost-latency-or-any-other-evaluation-metrics",
+                  "faqs/observability/how_can_I_observe_and_evaluate_multi-turn-trajectories-with-Maxim-AI"
                 ]
               }
             ]
