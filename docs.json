@@ -5,7 +5,31 @@
   "url": "https://getmaxim.ai/resources",
   "seo": {
     "metatags": {
-      "canonical": "https://getmaxim.ai/resources"
+      "canonical": "https://getmaxim.ai/resources",
+      "script": {
+        "type": "application/ld+json",
+        "content": {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Maxim AI Resources Portal",
+          "url": "https://getmaxim.ai/resources",
+          "description": "Resources, FAQs, and documentation for Maxim AI",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Maxim AI",
+            "url": "https://www.getmaxim.ai",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://getmaxim.ai/resources/logo/light.svg"
+            },
+            "sameAs": [
+              "https://x.com/getmaximai",
+              "https://github.com/maximhq",
+              "https://linkedin.com/company/maxim-ai"
+            ]
+          }
+        }
+      }
     }
   },
   "colors": {
