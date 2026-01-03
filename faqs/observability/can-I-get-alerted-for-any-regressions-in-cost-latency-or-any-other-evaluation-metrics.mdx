@@ -4,17 +4,23 @@ description: "Yes. Maxim AI allows you to track and log comprehensive metrics, i
 <br/>
 <br/>
 (See: Learn more about it [here](https://www.getmaxim.ai/docs/online-evals/set-up-alerts-and-notifications).)"
-jsonld: |
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": {
-      "@type": "Question",
-      "name": "Can I Get Alerted for Any Regressions In Cost, Latency, or Any Other Evaluation Metrics?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Maxim AI allows you to track and log comprehensive metrics, including token usage, latency, cost per request, and other performance and quality scores. You can define custom thresholds and receive real-time alerts via Slack or PagerDuty whenever a monitored metric exceeds your specified limits. This helps teams quickly detect and resolve issues in production."
-      }
-    }
-  }
 ---
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "Can I Get Alerted for Any Regressions In Cost, Latency, or Any Other Evaluation Metrics?",
+      "mainEntity": {
+        "@type": "Question",
+        "name": "Can I Get Alerted for Any Regressions In Cost, Latency, or Any Other Evaluation Metrics?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Maxim AI allows you to track and log comprehensive metrics, including token usage, latency, cost per request, and other performance and quality scores. You can define custom thresholds and receive real-time alerts via Slack or PagerDuty whenever a monitored metric exceeds your specified limits. This helps teams quickly detect and resolve issues in production."
+        }
+      }
+    })
+  }}
+/>

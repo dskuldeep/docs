@@ -7,17 +7,23 @@ For implementation examples, step-by-step guides, and best practices, developers
 <br/>
 (See: Learn more about it [here](https://www.getmaxim.ai/docs/offline-evals/via-sdk/prompts/ci-cd-integration#prompt-ci-cd-integration).)
 "
-jsonld: |
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": {
-      "@type": "Question",
-      "name": "How do I Integrate Evaluations into my CI/CD Pipeline?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Maxim enables teams to build automated evaluation pipelines that integrate directly into CI/CD workflows to validate quality on every code or prompt change. The integration is powered by Maxim's SDKs (Python, TypeScript, Java, and Go) and REST APIs, allowing teams to programmatically trigger test runs. Maxim integrates with popular CI/CD systems, including GitHub Actions, Jenkins, and CircleCI. Teams can automate both prompt and agent evaluations to catch regressions and enforce quality checks before any change reaches production."
-      }
-    }
-  }
 ---
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "How do I Integrate Evaluations into my CI/CD Pipeline?",
+      "mainEntity": {
+        "@type": "Question",
+        "name": "How do I Integrate Evaluations into my CI/CD Pipeline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Maxim enables teams to build automated evaluation pipelines that integrate directly into CI/CD workflows to validate quality on every code or prompt change. The integration is powered by Maxim's SDKs (Python, TypeScript, Java, and Go) and REST APIs, allowing teams to programmatically trigger test runs. Maxim integrates with popular CI/CD systems, including GitHub Actions, Jenkins, and CircleCI. Teams can automate both prompt and agent evaluations to catch regressions and enforce quality checks before any change reaches production."
+        }
+      }
+    })
+  }}
+/>

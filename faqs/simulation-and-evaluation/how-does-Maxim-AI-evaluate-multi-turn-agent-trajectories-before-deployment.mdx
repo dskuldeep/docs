@@ -1,20 +1,26 @@
 ---
 title: "How does Maxim AI Evaluate Multi-Turn Agent Trajectories Before Deployment?"
 description: "Maxim AI evaluates multi-turn agent trajectories offline using partial traces and AI-powered simulations. Test conversations, identify failures, and validate performance before deployment."
-jsonld: |
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": {
-      "@type": "Question",
-      "name": "How does Maxim AI Evaluate Multi-Turn Agent Trajectories Before Deployment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Maxim AI evaluates multi-turn agent trajectories offline using partial traces and AI-powered simulations. Test conversations, identify failures, and validate performance before deployment."
-      }
-    }
-  }
 ---
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "How does Maxim AI Evaluate Multi-Turn Agent Trajectories Before Deployment?",
+      "mainEntity": {
+        "@type": "Question",
+        "name": "How does Maxim AI Evaluate Multi-Turn Agent Trajectories Before Deployment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Maxim AI evaluates multi-turn agent trajectories offline using partial traces and AI-powered simulations. Test conversations, identify failures, and validate performance before deployment."
+        }
+      }
+    })
+  }}
+/>
 You can run offline evaluations on multi-turn agent trajectories in two common ways:
 - **With traces**: The first one is by bringing in partial traces, and evaluating the next step. For instance, if you want to evaluate the nth step, you bring in the previous n-1 traces. In other words, you can replay n-1 steps of the conversation and then evaluate the next one. 
 - **AI-powered simulations**: Generate realistic user interactions at scale to evaluate your agents across diverse real-world scenarios and user personas. Simulations help you identify behavioral trends, spot potential failure points, and validate agent performance without requiring live user traffic.

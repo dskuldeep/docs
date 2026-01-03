@@ -1,20 +1,26 @@
 ---
 title: "Is Maxim AI Compatible with OpenTelemetry (OTel)?"
 description: "Yes, Maxim AI is fully compatible with OpenTelemetry. You can send OTLP traces directly to Maxim for AI and LLM observability, or use Maxim as a central hub to forward enriched traces to other observability platforms."
-jsonld: |
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": {
-      "@type": "Question",
-      "name": "Is Maxim AI Compatible with OpenTelemetry (OTel)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Maxim AI is fully compatible with OpenTelemetry. You can send OTLP traces directly to Maxim for AI and LLM observability, or use Maxim as a central hub to forward enriched traces to other observability platforms."
-      }
-    }
-  }
 ---
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "Is Maxim AI Compatible with OpenTelemetry (OTel)?",
+      "mainEntity": {
+        "@type": "Question",
+        "name": "Is Maxim AI Compatible with OpenTelemetry (OTel)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Maxim AI is fully compatible with OpenTelemetry. You can send OTLP traces directly to Maxim for AI and LLM observability, or use Maxim as a central hub to forward enriched traces to other observability platforms."
+        }
+      }
+    })
+  }}
+/>
 ## Ingesting OTLP Traces into Maxim
 
 Maxim provides an OTLP ingestion endpoint that accepts traces in the vendor-neutral, industry-standard OpenTelemetry Protocol format. This enables deep insights into your AI systems using existing OpenTelemetry instrumentation.

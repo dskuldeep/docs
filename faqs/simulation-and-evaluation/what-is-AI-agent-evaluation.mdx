@@ -4,20 +4,26 @@ description: "Evaluation is how you systematically measure and improve the quali
 <br/>
 <br/>
 Maxim AI provides end-to-end evaluation across the entire agent development lifecycle, from prototype to production."
-jsonld: |
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": {
-      "@type": "Question",
-      "name": "What is AI Agent Evaluation?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Evaluation is how you systematically measure and improve the quality and performance of your AI agents. Maxim AI provides end-to-end evaluation across the entire agent development lifecycle, from prototype to production."
-      }
-    }
-  }
 ---
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "What is AI Agent Evaluation?",
+      "mainEntity": {
+        "@type": "Question",
+        "name": "What is AI Agent Evaluation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evaluation is how you systematically measure and improve the quality and performance of your AI agents. Maxim AI provides end-to-end evaluation across the entire agent development lifecycle, from prototype to production."
+        }
+      }
+    })
+  }}
+/>
 
 - **Pre-Production Evaluation ([Offline Evaluation](https://www.getmaxim.ai/docs/offline-evals/overview))**: Before deployment, teams can evaluate their AI agents using curated datasets or simulated real-world scenarios across different user personas. 
 - **In-Production Evaluation ([Online Evaluation](https://www.getmaxim.ai/docs/online-evals/overview))**: Assess AI performance in real-time at different granularities to maintain quality and reliability in production.
