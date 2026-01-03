@@ -8,15 +8,17 @@ Each session groups together all traces generated across multiple turns, giving 
 <br/>
 On top of sessions, you can attach evaluators such as task success, trajectory quality, or custom agent metrics to measure their real-world performance. These evaluations can be monitored over time and used to detect regressions, unexpected behaviors, or quality drops in production.
 "
-script:
-  type: "application/ld+json"
-  content:
-    "@context": "https://schema.org"
-    "@type": "FAQPage"
-    mainEntity:
-      "@type": "Question"
-      name: "How can I Observe and Evaluate Multi-Turn Trajectories with Maxim AI?"
-      acceptedAnswer:
-        "@type": "Answer"
-        text: "Maxim lets you observe and evaluate multi-turn agent behavior using Sessions, which represent end-to-end task executions. Each session groups together all traces generated across multiple turns, giving you a complete view of how context evolves as the agent plans, reasons, performs actions, and responds over time. This makes it easy to inspect the full trajectory rather than fragmented, single-turn logs. On top of sessions, you can attach evaluators such as task success, trajectory quality, or custom agent metrics to measure their real-world performance. These evaluations can be monitored over time and used to detect regressions, unexpected behaviors, or quality drops in production."
+jsonld: |
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": {
+      "@type": "Question",
+      "name": "How can I Observe and Evaluate Multi-Turn Trajectories with Maxim AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Maxim lets you observe and evaluate multi-turn agent behavior using Sessions, which represent end-to-end task executions. Each session groups together all traces generated across multiple turns, giving you a complete view of how context evolves as the agent plans, reasons, performs actions, and responds over time. This makes it easy to inspect the full trajectory rather than fragmented, single-turn logs. On top of sessions, you can attach evaluators such as task success, trajectory quality, or custom agent metrics to measure their real-world performance. These evaluations can be monitored over time and used to detect regressions, unexpected behaviors, or quality drops in production."
+      }
+    }
+  }
 ---
