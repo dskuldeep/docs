@@ -2,6 +2,12 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "palm",
   "name": "Maxim AI Resources Portal",
+  "url": "https://getmaxim.ai/resources",
+  "seo": {
+    "metatags": {
+      "canonical": "https://getmaxim.ai/resources"
+    }
+  },
   "colors": {
     "primary": "#0C3B43",
     "light": "#07C983"
