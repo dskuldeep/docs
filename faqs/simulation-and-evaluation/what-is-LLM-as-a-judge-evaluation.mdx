@@ -1,0 +1,34 @@
+---
+title: "What is LLM-as-a-Judge Evaluation?"
+description: "LLM as a Judge is an evaluation methodology where a language model assesses the quality, accuracy, or appropriateness of outputs from another AI system. Instead of relying solely on rigid rules, human reviewers, or traditional metrics, you leverage the reasoning capabilities of an LLM to evaluate responses based on nuanced criteria.
+
+This approach is particularly valuable when evaluating subjective qualities like helpfulness, tone, coherence, or contextual appropriateness that are difficult to measure with deterministic metrics."
+---
+
+### Maxim AI’s LLM as a Judge Implementation
+
+Maxim AI provides robust LLM-as-a-judge evaluation with:
+
+- **Flexible Judge Configuration**: Define custom evaluation criteria and judge prompts tailored to your specific requirements.
+
+- **Multi-Model Support**: Use different LLMs as judges (GPT-4, Claude, etc.) and compare their assessments.
+
+- **Automated Execution**: Run LLM evaluations automatically across your test sets and production traffic.
+
+- **Structured Outputs**: Extract and visualize judgment scores, categories, and explanations for easy analysis.
+
+- **Consistency Monitoring**: Track how judge assessments perform over time and identify evaluation drift.
+
+LLM as a Judge enables teams to evaluate AI outputs at scale with human-like judgment, making quality assurance practical and continuous.
+
+### Best Practices for LLM as a Judge
+
+- **Start with Clear Criteria**: Define exactly what you’re evaluating before designing judge prompts.
+
+- **Validate Against Humans**: Compare LLM judgments to human evaluations on a sample set to ensure alignment.
+
+- **Use Stronger Models**: More capable models (GPT-4, Claude) generally provide better judgments than smaller models.
+
+- **Implement Quality Checks**: Randomly audit LLM judgments to catch systematic errors or drift.
+
+- **Combine Multiple Judges**: For critical evaluations, use multiple LLM judges or combine LLM judgment with automated metrics.

@@ -1,0 +1,55 @@
+---
+title: "How can I Evaluate Prompts Across Various Scenarios?"
+description: "Prompts that work perfectly for one use case often fail spectacularly in others. A prompt optimized for technical documentation might produce inappropriate responses for customer support. Scenario-based evaluation ensures your prompts perform well across the full range of situations your users will encounter.
+
+Comprehensive scenario testing reveals edge cases, identifies failure modes, and validates that your prompt handles the diversity of real-world usage."
+
+---
+
+### Defining Evaluation Scenarios
+
+Scenarios are specific situations or contexts where your prompt will be used. Well-designed scenarios capture:
+
+- **User Intent Variations**: Different goals users might have (seeking information, requesting help, making purchases, reporting problems).
+
+- **Input Diversity**: Various ways users might phrase similar requests, from concise to verbose, technical to casual.
+
+- **Context Differences**: Different background information, conversation states, or environmental factors affecting the interaction.
+
+- **Edge Cases**: Unusual, ambiguous, or challenging situations that might break typical prompt behavior.
+
+- **User Personas**: Different user types (experts vs. novices, friendly vs. frustrated, aligned vs. adversarial).
+
+### Maxim AI’s Scenario Evaluation Features
+
+Maxim AI enables comprehensive scenario-based prompt evaluation:
+
+- **Scenario Management**: Organize and version test scenarios with rich metadata and categorization.
+
+- **Batch Evaluation**: Run prompts against entire scenario suites automatically, executing hundreds of tests in parallel.
+
+- **Scenario-Specific Metrics**: Define and track different success criteria for different scenario categories.
+
+- **Comparative Views**: Compare how different prompt versions perform across the same scenarios.
+
+- **Failure Clustering**: Automatically group similar failures to identify common issues across scenarios.
+
+- **Scenario Analytics**: Visualize performance breakdowns by scenario type, difficulty, or other attributes.
+
+**Continuous Testing**: Integrate scenario evaluation into CI/CD to catch regressions before deployment.
+
+### Best Practices for Scenario-Based Evaluation
+
+- **Start Broad, Then Deep**: Begin with diverse scenarios covering all use cases, then add depth within important categories.
+
+- **Update Scenarios Continuously**: Add new scenarios based on production failures and user feedback.
+
+- **Balance Coverage and Efficiency**: Maintain comprehensive coverage while keeping test execution time reasonable.
+
+- **Version Scenario Suites**: Track how your scenario collection evolves alongside your prompt development.
+
+- **Share Scenarios Across Team**: Use scenarios as communication tools to align on expected behavior.
+
+- **Monitor Scenario Drift**: Track whether real-world usage patterns match your scenario distribution.
+
+By systematically evaluating prompts across diverse scenarios, you build robust AI applications that handle the full complexity of real-world usage, maintaining quality and reliability even in challenging edge cases.

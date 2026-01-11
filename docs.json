@@ -29,7 +29,10 @@
                   "faqs/prompt-engineering/how-can-I-evaluate-the-performance-of-the-prompts-with-Maxim-AI",
                   "faqs/prompt-engineering/Can-I-build-no-code-agents-for-experimentation-with-Maxim-AI",
                   "faqs/prompt-engineering/does-Maxim-support-multimodal-inputs-for-prompt-evaluation",
-                  "faqs/prompt-engineering/can-I-reuse-common-instructions-across-multiple-prompts"
+                  "faqs/prompt-engineering/can-I-reuse-common-instructions-across-multiple-prompts",
+                  "faqs/prompt-engineering/how-can-I-evaluate-context-retrieved-by-prompts",
+                  "faqs/prompt-engineering/how-can-I-compare-and-evaluate-prompts-across-various-models",
+                  "faqs/prompt-engineering/how-can-I-evaluate-prompts-across-various-scenarios"
                 ]
               },
               {
@@ -45,7 +48,11 @@
                   "faqs/simulation-and-evaluation/what-type-of-evaluators-does-Maxim-provide",
                   "faqs/simulation-and-evaluation/how-can-I-integrate-evaluations-into-myci-cd-pipeline",
                   "faqs/simulation-and-evaluation/can-I-curate-and-evolve-datasets-for-agent-evals-in-Maxim-AI",
-                  "faqs/simulation-and-evaluation/does-Maxim-support-human-in-loop-evaluation-for-agents"
+                  "faqs/simulation-and-evaluation/does-Maxim-support-human-in-loop-evaluation-for-agents",
+                  "faqs/simulation-and-evaluation/what-is-agent-simulation",
+                  "faqs/simulation-and-evaluation/what-is-LLM-as-a-judge-evaluation",
+                  "faqs/simulation-and-evaluation/how-can-i-detect-hallucinations-in-my-AI-applications",
+                  "faqs/simulation-and-evaluation/how-can-I-evaluate-my-RAG-application"
                 ]
               },
               {

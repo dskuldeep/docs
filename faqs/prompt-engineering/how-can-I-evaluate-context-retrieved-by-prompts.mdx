@@ -1,0 +1,35 @@
+---
+title: "How can I Evaluate the Context Retrieved by the Prompt?"
+description: "Evaluating the context retrieved by your prompt is critical for ensuring your Retrieval-Augmented Generation (RAG) system delivers accurate, relevant responses. [Context evaluation](https://www.getmaxim.ai/docs/offline-evals/via-ui/prompts/retrieval) helps you measure whether your retrieval mechanism is surfacing the right information from your knowledge base before it reaches your language model."
+---
+
+### Key Metrics for Context Evaluation
+
+When evaluating retrieved context, focus on these essential metrics:
+
+- **Relevance Score**: Measures how closely the retrieved context aligns with the user's query. This metric helps identify whether your retrieval system is pulling the most pertinent information from your vector database or document store.
+
+- **Context Precision**: Evaluates the proportion of relevant information within the retrieved chunks. High precision means less noise and more signal in your context window.
+
+- **Context Recall**: Measures whether all necessary information to answer the query was successfully retrieved. Low recall indicates your retrieval strategy might be too restrictive or missing relevant sources.
+
+- **Ranking Quality**: Assesses whether the most relevant chunks appear at the top of your retrieved results, ensuring your model processes the best information first.
+
+### Evaluation Framework with Maxim AI
+
+Maxim AI provides comprehensive tools to evaluate your context retrieval performance:
+
+1. **Set Up Evaluation Datasets**: Create test datasets with queries and expected relevant documents to benchmark your retrieval system's performance.
+2. **Track Retrieval Metrics**: Monitor key indicators like semantic similarity scores, chunk relevance, and retrieval latency across your production traffic.
+3. **Compare Retrieval Strategies**: Test different embedding models, chunk sizes, and retrieval methods (semantic search, hybrid search, or reranking) to identify the optimal configuration.
+4. **Analyze Failure Patterns**: Identify queries where your retrieval system underperforms and understand whether issues stem from embedding quality, chunk strategy, or index coverage.
+
+### Best Practices for Context Evaluation
+
+**Create Representative Test Sets**: Build evaluation datasets that mirror your production query distribution. Include edge cases, ambiguous queries, and domain-specific terminology.
+
+**Establish Baseline Metrics**: Before optimizing, measure your current retrieval performance to track improvements and prevent regressions.
+
+**Monitor Production Performance**: Context quality can degrade over time as your knowledge base evolves. Continuous monitoring helps you catch issues before they impact user experience.
+
+**Iterate on Chunk Strategy**: Experiment with different chunking approaches (semantic chunking, fixed-size chunks, or paragraph-based splits) and measure their impact on retrieval quality.
