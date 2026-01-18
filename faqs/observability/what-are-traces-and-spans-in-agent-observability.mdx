@@ -1,0 +1,34 @@
+---
+title: " What are Traces and Spans in Agent Observability?"
+description: "Understanding traces and spans is fundamental to effective AI application observability. These concepts, borrowed from distributed tracing in traditional software systems, have been adapted by Maxim to provide comprehensive visibility into complex AI workflows involving LLM calls, retrieval operations, tool usage, and multi-step agent behaviors."
+---
+## Traces: Complete Request Journeys
+
+A trace represents the complete processing of a single request through your distributed AI system, capturing every action from the initial user input to the final response. Each trace in Maxim includes:
+
+- **Unique identifier**: Typically your request ID for correlation with application logs
+- **Name**: Descriptive label (e.g., "chatQuery" or "documentSummary") for categorization
+- **Tags**: Key-value pairs for flexible filtering and organization on the dashboard
+- **Input**: The user's original prompt or query
+- **Output**: The final response returned by your system
+- **Timestamp and duration**: When the trace started and how long it took to complete
+
+## Spans: Logical Units of Work
+
+Spans are the building blocks that compose a trace, representing distinct operations or processing steps within the larger request flow. Key characteristics of spans include:
+
+- **Hierarchical structure**: Spans can have parent-child relationships, creating a tree structure that represents your application's execution flow
+- **Unique identification**: Each span has a unique ID within the trace to prevent data conflicts
+- **Flexible nesting**: Create as many child spans as needed to logically group related operations
+- **Span-specific metadata**: Tags, names, and other attributes specific to each operation
+
+## Common Span Types in AI Applications
+
+Maxim supports specialized span types for AI-specific operations:
+
+- **Generations**: LLM inference calls with request/response details
+- **Retrievals**: Vector database or knowledge base queries
+- **Tool Calls**: External API or service invocations
+- **Custom Spans**: Any logical operation you want to track
+
+Together, traces and spans provide the granular visibility needed to understand complex AI agent behaviors, debug multi-step workflows, optimize performance bottlenecks, and ensure reliable operation of production AI applications.

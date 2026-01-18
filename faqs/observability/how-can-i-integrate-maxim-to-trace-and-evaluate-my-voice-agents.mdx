@@ -1,0 +1,33 @@
+---
+title: "How can I integrate Maxim to trace and evaluate my voice agents?"
+description: "Maxim provides native integrations for popular voice agent frameworks, enabling comprehensive tracing and evaluation of your voice AI applications through simple one-line integrations."
+---
+
+## LiveKit Integration
+
+For voice agents built with LiveKit, Maxim offers a streamlined integration:
+
+- **One-line setup**: Instrument your entire LiveKit agent with `instrument_livekit(logger, on_event)`
+- **Automatic tracing**: Captures agent conversations, function tool calls, and performance metrics in real-time
+- **Complete transcripts**: Records system instructions, user messages, and assistant responses
+- **Framework support**: Works seamlessly with both OpenAI Realtime and Gemini models within LiveKit
+
+## OpenAI Realtime API Integration
+
+Maxim supports direct integration with OpenAI's Realtime API:
+
+- **Minimal code changes**: Use the `MaximOpenAIClient` wrapper to enable comprehensive observability
+- **Session enrichment**: Add custom session names, tags, and IDs through additional headers
+- **Complete traces**: Captures multi-turn conversations, tool calls with arguments and results, plus detailed timing and cost metrics
+
+## Continuous Evaluation
+
+Once integrated, run continuous evaluations on your voice agent recordings and transcripts using specialized voice evaluators:
+
+- Abrupt disconnection detection
+- Signal-to-noise ratio measurement
+- Sentiment analysis
+- User satisfaction tracking
+- Word error rate (WER) calculation
+
+Combined with Maxim's observability suite, you can identify conversation patterns, debug performance issues, and continuously improve your voice agents based on real interaction data.

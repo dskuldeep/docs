@@ -32,7 +32,8 @@
                   "faqs/prompt-engineering/can-I-reuse-common-instructions-across-multiple-prompts",
                   "faqs/prompt-engineering/how-can-I-evaluate-context-retrieved-by-prompts",
                   "faqs/prompt-engineering/how-can-I-compare-and-evaluate-prompts-across-various-models",
-                  "faqs/prompt-engineering/how-can-I-evaluate-prompts-across-various-scenarios"
+                  "faqs/prompt-engineering/how-can-I-evaluate-prompts-across-various-scenarios",
+                  "faqs/prompt-engineering/how-can-I-collaboratively-create-review-evaluate-and-deploy-prompts-at-one-place"
                 ]
               },
               {
@@ -64,7 +65,13 @@
                   "faqs/observability/is-maxim-ai-otel-compatible",
                   "faqs/observability/what-is-agent-observability-and-why-do-iI-need-it",
                   "faqs/observability/can-I-get-alerted-for-any-regressions-in-cost-latency-or-any-other-evaluation-metrics",
-                  "faqs/observability/how_can_I_observe_and_evaluate_multi-turn-trajectories-with-Maxim-AI"
+                  "faqs/observability/how_can_I_observe_and_evaluate_multi-turn-trajectories-with-Maxim-AI",
+                  "faqs/observability/how-can-I-collect-and-add-user-feedback-to-a-trace",
+                  "faqs/observability/how-can-I-evaluate-voice-agents-with-realistic-voice-simulations",
+                  "faqs/observability/how-can-i-integrate-maxim-to-trace-and-evaluate-my-voice-agents",
+                  "faqs/observability/what-are-traces-and-spans-in-agent-observability",
+                  "faqs/observability/how-can-I-curate-datasets-from-my-production-logs",
+                  "faqs/observability/can-I-track-evaluation-costs-and-token-usage-at-the-eval-and-repository-levels"
                 ]
               }
             ]

@@ -1,0 +1,34 @@
+---
+title: " How can I Curate Datasets from my Production Logs?"
+description: "Building high-quality evaluation datasets is critical for maintaining AI application quality as your system evolves. Maxim enables you to curate datasets directly from production logs and human annotations, ensuring your test cases reflect real-world usage patterns, edge cases, and user expectations rather than synthetic or outdated scenarios."
+---
+## Curating from Production Logs
+
+The production log curation workflow in Maxim follows these steps:
+
+1. **Select relevant logs**: Navigate to your log repository (preferably production) and use filters to identify high-quality examples, edge cases, or specific scenarios you want to preserve for testing
+2. **Initiate dataset creation**: Select the logs you want to curate and click the "Add to Dataset" button in the top right corner
+3. **Choose or create dataset**: Either add to an existing dataset or create a new one using Maxim's pre-built templates (like "Dataset testing") or custom column structures
+4. **Map log fields to dataset columns**: Configure how log data maps to your dataset structure (e.g., Input field to Input column, Output to Output column, custom fields to reference data columns)
+5. **Finalize and access**: Click "Add to Dataset" and receive a notification when processing is complete
+
+## Benefits of Production-Based Datasets
+
+Curating from production logs provides several advantages:
+
+- Real user queries and interactions rather than hypothetical scenarios
+- Edge cases and failure modes discovered in production
+- Distribution of queries that matches actual usage patterns
+- Continuously evolving test coverage as your application grows
+
+## Curating from Human Annotations
+
+For creating golden datasets with verified correct outputs:
+
+- Set up test runs and send results to human raters for annotation
+- Review completed ratings including comments and human-corrected outputs
+- Select high-quality annotated entries using row checkboxes
+- Map human-corrected outputs to ground truth columns in your golden dataset
+- Selectively include only the columns relevant to your evaluation needs
+
+This dual approach to dataset curation ensures your evaluation suite remains relevant and comprehensive, combining the scale of automated production log collection with the quality assurance of human verification.
