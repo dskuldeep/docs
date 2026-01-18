@@ -1,0 +1,29 @@
+---
+title: "How can I Collect And Add User Feedback To A Trace?"
+description: "Collecting user feedback is essential for understanding how well your AI application meets user expectations and identifying opportunities for improvement. Maxim's observability platform includes a built-in Feedback entity that allows you to capture structured user ratings and comments directly within your application traces, creating a direct link between user satisfaction and specific system behaviors."
+---
+## Implementing User Feedback
+
+You can add feedback to traces using Maxim's SDK across multiple programming languages:
+
+- **JavaScript/TypeScript**: `trace.feedback({ score: 5, comment: "Great job!" })`
+- **Python**: `trace.feedback(score=5, comment="Great job!")`
+- **Go and Java**: Similar methods available through respective SDKs
+
+The feedback structure supports:
+
+- Numerical scores (typically 1-5 or custom rating scales)
+- Optional text comments for qualitative insights
+- Association with specific traces for granular analysis
+
+## Leveraging Feedback Data
+
+Once feedback is collected, Maxim provides powerful analysis capabilities:
+
+- View feedback directly in trace details alongside technical metrics like latency, token usage, and cost
+- Filter and search traces based on user satisfaction scores to identify patterns
+- Track average user feedback over time through the Overview tab's aggregated metrics
+- Correlate user satisfaction with specific prompt versions, model choices, or system configurations
+- Set up alerts when feedback scores drop below acceptable thresholds
+
+This feedback loop enables data-driven improvements to your AI applications, helping you prioritize optimization efforts based on actual user experience rather than technical metrics alone.
